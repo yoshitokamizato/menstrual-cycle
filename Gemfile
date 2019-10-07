@@ -13,8 +13,24 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# 以下，追加分
+gem 'bootstrap', '~> 4.3.1'
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'devise-bootstrap-views'
+gem 'jquery-rails'
+gem 'rails-i18n'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # 以下，追加分
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -28,6 +44,12 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+
+  # 以下，追加分
+  gem 'launchy'
+  gem 'webdrivers'
+  gem 'rspec_junit_formatter'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Windows環境での開発ではないので削除
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
