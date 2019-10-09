@@ -1,22 +1,21 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-light">
-    <%= link_to "menstrual-cycle", root_path, class: 'navbar-brand' %>
+    <%= link_to "生理周期アプリ", root_path, class: 'navbar-brand' %>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="Navber">
-      <span class="mr-auto"></span>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'nav_sign_out' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'nav-sign-out' %>
           </li>
       <% else %>
           <li class="nav-item active">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link', id: 'nav_sign_up' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link', id: 'nav-sign-up' %>
           </li>
           <li class="nav-item active">
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link', id: 'nav_sign_in' %>
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link', id: 'nav-sign-in' %>
           </li>
         <% end %>
       </ul>
