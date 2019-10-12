@@ -1,0 +1,12 @@
+<%= link_to "食事投稿画面へ", new_meal_path %>
+<% @meals.each do |meal| %>
+  <hr>
+  <p>生理周期：<%= meal.menstrual_cycle %></p>
+  <p><%= image_tag meal.image_url(:thumb) %></p>
+  <p>コメント：<%= meal.comment %></p>
+  <p>
+    <%= link_to "削除", meal_path(meal), method: :delete, data: { confirm: "削除しますか？" } %>
+    <%= link_to "編集", edit_meal_path(meal), method: :get %>
+  </p>
+
+<% end %>

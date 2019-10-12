@@ -1,0 +1,7 @@
+<%= form_for @meal, url: meals_path, html: { method: :post } do |f| %>
+  <p>食事新規投稿</p>
+  <p>生理周期：<%= f.text_field :menstrual_cycle %></p>
+  <p><%= f.file_field :image %></p>
+  <p><%= f.text_area :comment %></p>
+  <input type="submit" value="送信">
+<% end %>
