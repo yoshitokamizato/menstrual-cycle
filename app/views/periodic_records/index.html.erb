@@ -1,0 +1,27 @@
+<div class="container-fluid width-md">
+  <%= link_to '新規追加', new_periodic_record_path, class: 'btn btn-info btn-block' %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">日付</th>
+      <th scope="col">基礎体温</th>
+      <th scope="col">体重</th>
+      <th scope="col">症状</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @periodic_records.each do |periodic_record| %>
+      <tr>
+        <td><%= periodic_record.date %></td>
+        <td><%= periodic_record.body_temperature %> ℃</td>
+        <td><%= periodic_record.body_weight %> kg</td>
+        <td><%= periodic_record.symptom %></td>
+        <td><%= link_to '修正', edit_periodic_record_path(periodic_record), class: 'btn btn-warning rounded-pill' %></td>
+        <td><%= link_to '削除', periodic_record_path(periodic_record), class: 'btn btn-danger rounded-pill', method: :delete, data: {confirm: "削除しますか?"} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
