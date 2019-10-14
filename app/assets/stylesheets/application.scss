@@ -53,10 +53,34 @@ hr.devise-link {
 
 // 生理周期記録管理画面
 
-div.width-300 {
-  max-width: 300px;
+div.cycle-form {
+  max-width: 500px;
+  margin: auto;
 }
 
-div.width-md {
+div.container-cycle {
   max-width: 768px;
+  margin: auto;
+}
+
+div.cycle-date-form {
+  width: 200px
+}
+
+div.cycle-weight-form {
+  width: 150px
+}
+
+h1.cycle-title {
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 1.5rem;
+  }
+}
+
+th.cycle-buttons {
+  width: 90px;
 }

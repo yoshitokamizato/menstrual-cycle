@@ -15,14 +15,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_105409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "periodic_records", force: :cascade do |t|
+  create_table "cycle_records", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date", null: false
-    t.float "body_temperature"
-    t.float "body_weight"
-    t.string "symptom"
+    t.float "body_temperature", null: false
+    t.float "body_weight", null: false
+    t.text "symptom", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_cycle_records_on_date"
   end
 
   create_table "users", force: :cascade do |t|

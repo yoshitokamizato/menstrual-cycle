@@ -4,7 +4,7 @@ ja:
       user:
         name: ニックネーム
         flag: 利用者フラグ
-      periodic_record:
+      cycle_record:
         date: 日付
         body_temperature: 基礎体温
         body_weight: 体重
