@@ -1,0 +1,52 @@
+@import "bootstrap";
+
+// フッターを一番下に配置する設定を含む
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
+  "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
+  "MS PGothic", sans-serif;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  div.content {
+    flex: 1;
+  }
+}
+
+// ログイン画面
+
+div.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}
+
+// フラッシュ
+
+div.alert-notice {
+  @extend .alert-info;
+}
+
+div.alert-alert {
+  @extend .alert-danger;
+}
+
+// ログイン画面の横線
+
+hr.devise-link {
+  height: 10px;
+  background-image: linear-gradient(-45deg,
+          hsla(0, 0%, 70%, 0),
+          hsla(0, 0%, 70%, 0) 25%,
+          hsla(0, 0%, 70%, 1) 25%,
+          hsla(0, 0%, 70%, 1) 50%,
+          hsla(0, 0%, 70%, 0) 50%,
+          hsla(0, 0%, 70%, 0) 75%,
+          hsla(0, 0%, 70%, 1) 75%);
+  background-size: 10px 10px;
+}

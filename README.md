@@ -1,24 +1,10 @@
-# README
+# 生理周期アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発環境
 
-Things you may want to cover:
+- Ruby 2.6.4
+- Rails 5.2.3
 
-* Ruby version
+## テスト
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- RSpec
