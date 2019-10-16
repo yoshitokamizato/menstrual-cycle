@@ -1,57 +1,21 @@
-<div class="container-fluid px-0">
+<div class="container-fluid">
   <%= render 'shared/flash_messages' %>
   <div class="container-cycle">
-    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-3' %>
-
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a href="#nav-index" class="nav-link active" data-toggle="tab">一覧</a>
-      </li>
-      <li class="nav-item">
-        <a href="#nav-body-temperature" class="nav-link" data-toggle="tab">基礎体温</a>
-      </li>
-      <li class="nav-item">
-        <a href="#nav-body-weight" class="nav-link" data-toggle="tab">体重</a>
-      </li>
-    </ul>
-
-    <div class="tab-content">
-      <div id="nav-index" class="tab-pane active">
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col">日付</th>
-            <th scope="col">基礎体温</th>
-            <th scope="col">体重</th>
-            <th scope="col" class="cycle-buttons"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @cycle_records.each do |cycle_record| %>
-            <tr>
-              <td><%= cycle_record.date.strftime("%-m/%-d") %></td>
-              <td><%= cycle_record.body_temperature %> ℃</td>
-              <td><%= cycle_record.body_weight %> kg</td>
-              <td rowspan="2">
-                <%= link_to '修正', edit_cycle_record_path(cycle_record), class: 'btn btn-warning rounded-pill mb-3' %>
-                <%= link_to '削除', cycle_record_path(cycle_record), class: 'btn btn-danger rounded-pill mb-3', method: :delete, data: {confirm: "削除しますか?"} %>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="3" class="border-0">
-                <%= simple_format(cycle_record.symptom) %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div id="nav-body-temperature" class="tab-pane">
-        <canvas id="chartBodyTemperature"></canvas>
-      </div>
-      <div id="nav-body-weight" class="tab-pane">
-        <canvas id="chartBodyWeight"></canvas>
-      </div>
+    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-2' %>
+    <div class="cotainer my-3">
+      <input type="date" value=<%= Date.today - 6.day %> id="start-date">
+      〜
+      <input type="date" value=<%= Date.today %> id="end-date">
+      <input type="button" value="期間指定" class="btn btn-primary" onclick="onButtonClickPeriod();">
     </div>
+    <div class="cotainer my-3">
+      <input type="button" value="過去１週間" class="btn btn-primary" onclick="onButtonClickWeek();">
+      <input type="button" value="過去２週間" class="btn btn-primary" onclick="onButtonClickTwoWeek();">
+      <input type="button" value="過去１ヶ月" class="btn btn-primary" onclick="onButtonClickMonth();">
+      <input type="button" value="過去３ヶ月" class="btn btn-primary" onclick="onButtonClickThreeMonth();">
+    </div>
+    <canvas id="chartBodyTemperature"></canvas>
+    <canvas id="chartBodyWeight"></canvas>
   </div>
 </div>
+<%= javascript_include_tag 'cycle_records.js' %>

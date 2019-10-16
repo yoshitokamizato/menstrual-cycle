@@ -3,7 +3,7 @@ class CycleRecordsController < ApplicationController
 
   def index
     @cycle_records = current_user.cycle_records.order(date: :desc)
-    chart_data_settings(last_week)
+    chart_data_settings(all_period)
   end
 
   def new
@@ -46,21 +46,24 @@ class CycleRecordsController < ApplicationController
     params.require(:cycle_record).permit(:date, :body_temperature, :body_weight, :symptom)
   end
 
-  def last_week
-    from = Date.today - 6
-    to = Date.today
-    from..to
+  def all_period
+    @cycle_records.last.date..@cycle_records.first.date
   end
 
   def chart_data_settings(period)
     weeks = ["月", "火", "水", "木", "金", "土", "日"]
     gon.dates = period.map { |date| date.strftime("%-m/%-d(#{weeks[date.strftime("%u").to_i - 1]})") }
-    gon.body_temperatures = []
-    gon.body_weights = []
+    # データを単純に取り出すと，日付が不連続なデータになるため，日付が連続するデータを作成する。
+    gon.cycle_records = []
     period.each do |date|
-      record = CycleRecord.find_by(date: date)
-      gon.body_temperatures << record&.body_temperature
-      gon.body_weights << record&.body_weight
+      cycle_record = @cycle_records.find do |record|
+        record.date == date
+      end
+      if cycle_record.present?
+        gon.cycle_records << cycle_record.slice(:date, :body_temperature, :body_weight)
+      else
+        gon.cycle_records << {date: date, body_temperature: nil, body_weight: nil}
+      end
     end
   end
 end
