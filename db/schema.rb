@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 2019_10_13_105409) do
     t.index ["date"], name: "index_cycle_records_on_date"
   end
 
+  create_table "exercises", force: :cascade do |t|
+    t.string "menstrual_cycle"
+    t.string "image"
+    t.text "comment"
+    t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.string "menstrual_cycle"
+    t.string "image"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

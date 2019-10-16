@@ -21,6 +21,8 @@ gem 'devise-i18n-views'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'rmagick'
 
 # チャート（折れ線グラフ）
 gem 'chart-js-rails'

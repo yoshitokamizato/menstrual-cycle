@@ -17,9 +17,15 @@
             </div>
           </li>
           <li class="nav-item active">
+            <%= link_to "食事投稿一覧へ", meals_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "運動投稿一覧へ", exercises_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'nav-sign-out' %>
           </li>
-      <% else %>
+        <% else %>
           <li class="nav-item active">
             <%= link_to "新規登録", new_user_registration_path, class: 'nav-link', id: 'nav-sign-up' %>
           </li>
