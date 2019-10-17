@@ -1,3 +1,8 @@
+/* ...
+*= require flatpickr
+*= require flatpickr/themes/material_orange
+*/
+
 @import "bootstrap";
 
 // フッターを一番下に配置する設定を含む
@@ -83,4 +88,16 @@ h1.cycle-title {
 
 th.cycle-buttons {
   width: 90px;
+}
+
+div.form-calendar {
+  @media screen and (min-width: 576px) {
+    width: 200px;
+  }
+}
+
+input.btn-calendar {
+  @media screen and (max-width: 575px) {
+    width: 100%;
+  }
 }

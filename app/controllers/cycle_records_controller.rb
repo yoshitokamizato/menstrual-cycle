@@ -2,8 +2,11 @@ class CycleRecordsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @cycle_records = current_user.cycle_records.order(date: :desc)
-    chart_data_settings(all_period)
+    gon.cycle_records = CycleRecord.chart_data(current_user)
+    period = gon.cycle_records.map { |record| record[:date] }
+
+    gon.start_date = period.first.strftime('%Y-%m-%d')
+    gon.end_date = period.last.strftime('%Y-%m-%d')
   end
 
   def new
@@ -44,26 +47,5 @@ class CycleRecordsController < ApplicationController
 
   def cycle_record_params
     params.require(:cycle_record).permit(:date, :body_temperature, :body_weight, :symptom)
-  end
-
-  def all_period
-    @cycle_records.last.date..@cycle_records.first.date
-  end
-
-  def chart_data_settings(period)
-    weeks = ["月", "火", "水", "木", "金", "土", "日"]
-    gon.dates = period.map { |date| date.strftime("%-m/%-d(#{weeks[date.strftime("%u").to_i - 1]})") }
-    # データを単純に取り出すと，日付が不連続なデータになるため，日付が連続するデータを作成する。
-    gon.cycle_records = []
-    period.each do |date|
-      cycle_record = @cycle_records.find do |record|
-        record.date == date
-      end
-      if cycle_record.present?
-        gon.cycle_records << cycle_record.slice(:date, :body_temperature, :body_weight)
-      else
-        gon.cycle_records << {date: date, body_temperature: nil, body_weight: nil}
-      end
-    end
   end
 end

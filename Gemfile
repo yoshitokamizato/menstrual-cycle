@@ -27,6 +27,8 @@ gem 'rmagick'
 # チャート（折れ線グラフ）
 gem 'chart-js-rails'
 gem 'gon'
+# カレンダーフォーム
+gem 'flatpickr'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

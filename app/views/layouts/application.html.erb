@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Menstrual Cycle</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= include_gon %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <% if controller_name == 'cycle_records' && action_name == 'index' %>
-      <%= javascript_include_tag 'cycle_records.js', 'data-turbolinks-track': 'reload' %>
-    <% end %>
-  </head>
-  <body>
-  <div class="content">
-    <%= render 'shared/header' %>
-    <%= yield %>
-    <%= render 'shared/debug' %>
-  </div>
-  <%= render 'shared/footer' %>
-  </body>
+<head>
+  <title>Menstrual Cycle</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= include_gon %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<div class="content">
+  <%= render 'shared/header' %>
+  <%= yield %>
+  <%= render 'shared/debug' %>
+</div>
+<%= render 'shared/footer' %>
+</body>
 </html>
