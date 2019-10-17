@@ -8,6 +8,9 @@
     <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if controller_name == 'cycle_records' && action_name == 'index' %>
+      <%= javascript_include_tag 'cycle_records.js', 'data-turbolinks-track': 'reload' %>
+    <% end %>
   </head>
   <body>
   <div class="content">

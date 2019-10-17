@@ -87,14 +87,9 @@ function onButtonClickPeriod() {
 
 // turbolinksの有無に関係なくグラフを描く
 // 開発環境で，サーバー起動後に最初だけグラフが表示されない不具合が解消できず
-window.addEventListener('DOMContentLoaded', function () {
+$(document).on('turbolinks:load', function () {
     chart_existence = false;
-    window.addEventListener('turbolinks:load', function () {
-        onButtonClickPeriod();
-    });
-    if (!chart_existence) {
-        onButtonClickPeriod();
-    }
+    onButtonClickPeriod();
 });
 
 // 過去◯日間のボタン機能
