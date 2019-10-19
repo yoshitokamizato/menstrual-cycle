@@ -16,14 +16,23 @@
               <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
             </div>
           </li>
-          <li class="nav-item active">
-            <%= link_to "食事投稿一覧へ", meals_path, class: 'nav-link' %>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="posting_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              投稿
+            </a>
+            <div class="dropdown-menu" aria-labelledby="posting_option">
+              <%= link_to "食事投稿一覧へ", meals_path, class: 'dropdown-item' %>
+              <%= link_to "運動投稿一覧へ", exercises_path, class: 'dropdown-item' %>
+            </div>
           </li>
-          <li class="nav-item active">
-            <%= link_to "運動投稿一覧へ", exercises_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'nav-sign-out' %>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="others_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              オプション
+            </a>
+            <div class="dropdown-menu" aria-labelledby="others_option">
+              <%= link_to 'アカウント編集', edit_user_registration_path, class: 'dropdown-item', id: 'nav-sign-edit' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
+            </div>
           </li>
         <% else %>
           <li class="nav-item active">
