@@ -36,13 +36,13 @@
           </li>
         <% else %>
           <li class="nav-item active">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link', id: 'nav-sign-up' %>
-          </li>
-          <li class="nav-item active">
             <%= link_to "ログイン", new_user_session_path, class: 'nav-link', id: 'nav-sign-in' %>
           </li>
         <% end %>
       </ul>
+    </div>
+    <div>
+      <%= current_user.name if user_signed_in? %>
     </div>
   </nav>
 </header>

@@ -5,8 +5,10 @@ var today = new Date();
 
 // カレンダーのフォーム（flatpickr）
 $(document).on('turbolinks:load', function () {
-    var start_date = gon.start_date;
-    var end_date = gon.end_date;
+    if (document.getElementById('start-date') != null) {
+        var start_date = gon.start_date;
+        var end_date = gon.end_date;
+    }
 
     flatpickr.localize(flatpickr.l10ns.ja);
     flatpickr('#cycle_record_date', {defaultDate: 'today'});

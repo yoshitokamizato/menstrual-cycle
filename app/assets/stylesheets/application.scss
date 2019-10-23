@@ -17,6 +17,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fef;
 
   div.content {
     flex: 1;
@@ -31,6 +32,13 @@ div.container-login {
   padding: 2rem;
 }
 
+// ドロップメニューの背景
+
+nav.navbar {
+  div.dropdown-menu {
+    background-color: #fef;
+  }
+}
 // フラッシュ
 
 div.alert-notice {
