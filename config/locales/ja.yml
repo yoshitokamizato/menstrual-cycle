@@ -1,9 +1,24 @@
 ja:
   activerecord:
+    models:
+      admin_user: 管理者
+      comment: コメント
+      user: ユーザー
     attributes:
+      admin_user:
+        email: メールアドレス
+        current_sign_in_at: 最新ログイン日時
+        sign_in_count: ログイン回数
+        created_at: 作成日時
       user:
         name: ニックネーム
         flag: 利用者フラグ
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        created_at: 作成日時
+        updated_at: 更新日時
       cycle_record:
         date: 日付
         body_temperature: 基礎体温
@@ -15,6 +30,34 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  attributes:
+    id: ID
+    program_id: プログラムID
+    error_id: エラーID
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: 確認用パスワード
+    genre: ジャンル
+    title: タイトル
+    content: 内容
+    contents: 内容
+    body: 内容
+    namespace: 名前空間
+    resource_type: リソースタイプ
+    resource_id: リソースID
+    author_type: 著者タイプ
+    author_id: 著者ID
+    created_at: 作成日時
+    updated_at: 更新日時
+    current_sign_in_at: 最新ログイン日時
+    last_sign_in_at: 最終ログイン日時
+    current_sign_in_ip: 現在ログインIPアドレス
+    last_sign_in_ip: 最終ログインIPアドレス
+    sign_in_count: ログイン回数
+    encrypted_password: 暗号化パスワード
+    reset_password_token: パスワード再設定トークン
+    reset_password_sent_at: パスワード再設定メール送信日時
+    remember_created_at: 自動ログイン用クッキー作成日時
   date:
     abbr_day_names:
       - 日
