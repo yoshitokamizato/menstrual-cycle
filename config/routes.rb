@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :cycle_records
+  # 生理記録管理画面
+  resources :cycle_records, only: %i[index new create]
+  # editとupdateを，idを渡さずに使えるようにする
+  get 'cycle_records/edit', to: 'cycle_records#edit'
+  post 'cycle_records/update', to: 'cycle_records#update'
+
   resources :meals
   resources :exercises
 end

@@ -10,8 +10,8 @@ class CycleRecord < ApplicationRecord
     cycle_records = user.cycle_records.order(date: :asc)
     today = Date.today
 
-     # 記録が無い場合にエラーが出るのを防止
-    return [{date: today, body_temperature: nil, body_weight: nil}] if cycle_records.empty?
+    # 記録が無い場合にエラーが出るのを防止
+    return [{date: today, body_temperature: nil, body_weight: nil, symptom: nil}] if cycle_records.empty?
 
     start_date = cycle_records.first.date
     last_date = cycle_records.last.date
@@ -27,11 +27,19 @@ class CycleRecord < ApplicationRecord
         record.date == date
       end
       if cycle_record.present?
-        chart_data << cycle_record.slice(:date, :body_temperature, :body_weight)
+        chart_data << cycle_record.slice(:date, :body_temperature, :body_weight, :symptom)
       else
-        chart_data << {date: date, body_temperature: nil, body_weight: nil}
+        chart_data << {date: date, body_temperature: nil, body_weight: nil, symptom: nil}
       end
     end
     chart_data
+  end
+
+  # 編集ページ用のデータ
+  def self.get_data(user)
+    cycle_records = user.cycle_records.order(date: :asc)
+    cycle_records.map do |cycle_record|
+      cycle_record.slice(:date, :body_temperature, :body_weight, :symptom)
+    end
   end
 end

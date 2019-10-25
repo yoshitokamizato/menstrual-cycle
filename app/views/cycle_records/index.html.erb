@@ -1,22 +1,19 @@
+<%= Gon::Base.render_data %>
 <%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <div class="container-cycle">
-    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-2' %>
     <div class="form-row">
       <div class="input-group col-sm-auto mt-2 form-calendar">
         <div class="input-group-append">
           <span class="input-group-text">開始</span>
         </div>
-        <input type="text" id="start-date" class="form-control bg-white text-center">
+        <input type="text" id="start-date" class="form-control bg-white text-center" onchange="CycleRecordsPeriod();">
       </div>
       <div class="input-group col-sm-auto mt-2 form-calendar">
         <div class="input-group-append">
           <span class="input-group-text">終了</span>
         </div>
-        <input type="text" id="end-date" class="form-control bg-white text-center">
-      </div>
-      <div class="input-group col-sm mt-2">
-        <input type="button" value="期間指定" class="btn btn-primary btn-block" onclick="onButtonClickPeriod();">
+        <input type="text" id="end-date" class="form-control bg-white text-center" onchange="CycleRecordsPeriod();">
       </div>
     </div>
     <div class="row mb-3">
@@ -33,7 +30,10 @@
         <input type="button" value="過去３ヶ月" class="btn btn-success btn-block" onclick="onButtonClickThreeMonth();">
       </div>
     </div>
-    <canvas id="chartBodyTemperature"></canvas>
+    <canvas id="chartBodyTemperature" class="mb-4"></canvas>
     <canvas id="chartBodyWeight"></canvas>
+    <hr class="devise-link my-4">
+    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-3' %>
+    <%= link_to '記録の修正', cycle_records_edit_path, class: 'btn btn-info btn-block' %>
   </div>
 </div>

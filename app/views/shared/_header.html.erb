@@ -13,6 +13,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="cycle_records_option">
               <%= link_to "新規記録", new_cycle_record_path, class: 'dropdown-item' %>
+              <%= link_to "記録の修正", cycle_records_edit_path, class: 'dropdown-item' %>
               <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
             </div>
           </li>
@@ -40,9 +41,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-    <div>
-      <%= current_user.name if user_signed_in? %>
     </div>
   </nav>
 </header>
