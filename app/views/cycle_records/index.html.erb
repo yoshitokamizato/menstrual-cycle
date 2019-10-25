@@ -1,3 +1,4 @@
+<%= Gon::Base.render_data %>
 <%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <div class="container-cycle">
@@ -33,7 +34,10 @@
         <input type="button" value="過去３ヶ月" class="btn btn-success btn-block" onclick="onButtonClickThreeMonth();">
       </div>
     </div>
-    <canvas id="chartBodyTemperature"></canvas>
+    <canvas id="chartBodyTemperature" class="mb-4"></canvas>
     <canvas id="chartBodyWeight"></canvas>
+    <hr class="devise-link my-4">
+    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-3' %>
+    <%= link_to '記録の修正', cycle_records_edit_path, class: 'btn btn-info btn-block' %>
   </div>
 </div>
