@@ -1,5 +1,4 @@
 class CycleRecordsController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     gon.cycle_records = CycleRecord.chart_data(current_user)
