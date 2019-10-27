@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :meals
   resources :exercises
+  resources :rooms, only: [:show]
+  mount ActionCable.server => '/cable'
 end
