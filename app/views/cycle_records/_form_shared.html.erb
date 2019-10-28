@@ -1,18 +1,19 @@
-<div class="form-group cycle-weight-form">
+<div class="form-group">
   <%= form.label :body_temperature, class: 'control-label' %>
-  <div class="form-row">
+  <div class="form-row cycle-weight-form">
     <div class="col-10">
-      <%= form.number_field :body_temperature, value: @cycle_record.body_temperature, class: 'form-control', id: 'cycle-record-body-temperature', in: 20.0..50.0, step: '0.1', required: true %>
+      <%= form.number_field :body_temperature, value: @cycle_record.body_temperature, class: 'form-control', id: 'cycle-record-body-temperature', in: 20.00..50.00, step: '0.01', required: true %>
     </div>
     <div class="col-2 my-auto">
       <span>℃</span>
     </div>
   </div>
+  <small>小数第2位まで登録できます</small>
 </div>
 
-<div class="form-group cycle-weight-form">
+<div class="form-group">
   <%= form.label :body_weight, class: 'control-label' %>
-  <div class="form-row">
+  <div class="form-row cycle-weight-form">
     <div class="col-10">
       <%= form.number_field :body_weight, value: @cycle_record.body_weight, class: 'form-control', id: 'cycle-record-body-weight', in: 10.0..300.0, step: '0.1', required: true %>
     </div>
@@ -20,6 +21,7 @@
       <span>kg</span>
     </div>
   </div>
+  <small>小数第1位まで登録できます</small>
 </div>
 
 <div class="form-group">
