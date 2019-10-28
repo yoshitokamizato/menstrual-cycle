@@ -15,14 +15,26 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # 以下，追加分
 gem 'bootstrap', '~> 4.3.1'
+
+# 日本語化，ログイン機能
+gem 'activeadmin'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 gem 'rails-i18n'
+
+# 画像投稿機能
 gem 'carrierwave'
 gem 'rmagick'
+
+# チャート（折れ線グラフ）
+gem 'chart-js-rails'
+gem 'gon'
+
+# カレンダーフォーム
+gem 'flatpickr'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

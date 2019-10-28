@@ -11,27 +11,6 @@ RSpec.describe "Sessions", type: :system do
     body[/http[^"]+/]
   end
 
-  scenario "user successfully signs up" do
-    user = build(:user)
-    visit root_path
-    expect(page).to have_http_status '200'
-    expect(page).to have_selector '#nav-sign-in', text: 'ログイン'
-
-    find('#nav-sign-up', text: '新規登録').click
-    fill_in "user_email", with: user.email
-    fill_in "user_password", with: user.password
-    fill_in "user_password_confirmation", with: user.password
-    expect { click_button "新規登録" }.to change(User.all, :count).by(1)
-
-    expect(page).to have_content "新規登録が完了しました。"
-
-    click_link "ログアウト"
-    expect(page).to have_current_path root_path
-    expect(page).to have_content "ログアウトしました。"
-    expect(page).to have_no_selector '#nav-sign-out', text: 'ログアウト'
-    expect(page).to have_selector '#nav-sign-up', text: '新規登録'
-  end
-
   scenario "user successfully signs in" do
     user = create(:user)
     visit root_path
