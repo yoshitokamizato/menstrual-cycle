@@ -23,7 +23,6 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'pry-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
