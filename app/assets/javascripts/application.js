@@ -158,13 +158,20 @@ function drawGraphs(from, to) {
         var ctx_temperature = document.getElementById('chartBodyTemperature').getContext('2d');
         var ctx_weight = document.getElementById('chartBodyWeight').getContext('2d');
 
-
         chart_temperature = new Chart(ctx_temperature, {
             type: 'line',
             data: body_temperature_data_list,
             options: {
                 tooltips: {
                     callbacks: chart_temperature_callbacks
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMin: 36.5,
+                            suggestedMax: 37.0
+                        }
+                    }]
                 }
             }
         });
