@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-light">
+  <nav class="navbar navbar-expand-md navbar-light">
     <%= link_to "生理周期アプリ", root_path, class: 'navbar-brand' %>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
@@ -7,13 +7,35 @@
     <div class="collapse navbar-collapse" id="Navber">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link', id: 'nav-sign-out' %>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="cycle_records_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              生理周期記録管理
+            </a>
+            <div class="dropdown-menu" aria-labelledby="cycle_records_option">
+              <%= link_to "新規記録", new_cycle_record_path, class: 'dropdown-item' %>
+              <%= link_to "記録の修正", cycle_records_edit_path, class: 'dropdown-item' %>
+              <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
+            </div>
           </li>
-      <% else %>
-          <li class="nav-item active">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link', id: 'nav-sign-up' %>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="posting_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              投稿
+            </a>
+            <div class="dropdown-menu" aria-labelledby="posting_option">
+              <%= link_to "食事投稿一覧へ", meals_path, class: 'dropdown-item' %>
+              <%= link_to "運動投稿一覧へ", exercises_path, class: 'dropdown-item' %>
+            </div>
           </li>
+          <li class="nav-item dropdown active">
+            <a href="#" class="nav-link dropdown-toggle" id="others_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              オプション
+            </a>
+            <div class="dropdown-menu" aria-labelledby="others_option">
+              <%= link_to 'アカウント編集', edit_user_registration_path, class: 'dropdown-item', id: 'nav-sign-edit' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
+            </div>
+          </li>
+        <% else %>
           <li class="nav-item active">
             <%= link_to "ログイン", new_user_session_path, class: 'nav-link', id: 'nav-sign-in' %>
           </li>
