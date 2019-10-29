@@ -1,3 +1,8 @@
+/* ...
+*= require flatpickr
+*= require flatpickr/themes/material_orange
+*/
+
 @import "bootstrap";
 
 // フッターを一番下に配置する設定を含む
@@ -12,6 +17,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fef;
 
   div.content {
     flex: 1;
@@ -26,6 +32,13 @@ div.container-login {
   padding: 2rem;
 }
 
+// ドロップメニューの背景
+
+nav.navbar {
+  div.dropdown-menu {
+    background-color: #fef;
+  }
+}
 // フラッシュ
 
 div.alert-notice {
@@ -49,4 +62,50 @@ hr.devise-link {
           hsla(0, 0%, 70%, 0) 75%,
           hsla(0, 0%, 70%, 1) 75%);
   background-size: 10px 10px;
+}
+
+// 生理周期記録管理画面
+
+div.cycle-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+div.container-cycle {
+  max-width: 768px;
+  margin: auto;
+}
+
+div.cycle-date-form {
+  width: 150px
+}
+
+div.cycle-weight-form {
+  width: 150px
+}
+
+h1.cycle-title {
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 1.5rem;
+  }
+}
+
+th.cycle-buttons {
+  width: 90px;
+}
+
+div.form-calendar {
+  @media screen and (min-width: 576px) {
+    width: 200px;
+  }
+}
+
+input.btn-calendar {
+  @media screen and (max-width: 575px) {
+    width: 100%;
+  }
 }

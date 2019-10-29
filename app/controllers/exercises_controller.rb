@@ -20,7 +20,7 @@ class ExercisesController < ApplicationController
 
   def update
     exercise = Exercise.find(params[:id])
-    exercise.update(menstrual_cycle: exercise_params[:menstrual_cycle], image: exercise_params[:image], comment: exercise_params[:comment], user_id: current_user.id)
+    exercise.update(exercise_params)
     redirect_to :action => "index"
   end
 

@@ -1,0 +1,28 @@
+<div class="form-group cycle-weight-form">
+  <%= form.label :body_temperature, class: 'control-label' %>
+  <div class="form-row">
+    <div class="col-10">
+      <%= form.number_field :body_temperature, value: @cycle_record.body_temperature, class: 'form-control', id: 'cycle-record-body-temperature', in: 20.0..50.0, step: '0.1', required: true %>
+    </div>
+    <div class="col-2 my-auto">
+      <span>℃</span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group cycle-weight-form">
+  <%= form.label :body_weight, class: 'control-label' %>
+  <div class="form-row">
+    <div class="col-10">
+      <%= form.number_field :body_weight, value: @cycle_record.body_weight, class: 'form-control', id: 'cycle-record-body-weight', in: 10.0..300.0, step: '0.1', required: true %>
+    </div>
+    <div class="col-2 my-auto">
+      <span>kg</span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :symptom, class: 'control-label' %>
+  <%= form.text_field :symptom, value: @cycle_record.symptom, class: 'form-control', id: 'cycle-record-symptom', required: true %>
+</div>

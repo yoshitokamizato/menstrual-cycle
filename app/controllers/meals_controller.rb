@@ -20,7 +20,7 @@ class MealsController < ApplicationController
 
   def update
     meal = Meal.find(params[:id])
-    meal.update(menstrual_cycle: meal_params[:menstrual_cycle], image: meal_params[:image], comment: meal_params[:comment], user_id: current_user.id)
+    meal.update(meal_params)
     redirect_to :action => "index"
   end
 
