@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'cycle_records/edit', to: 'cycle_records#edit'
   post 'cycle_records/update', to: 'cycle_records#update'
 
+  resources :movies, only: :index
+  get 'movies/edit', to: 'movies#edit'
+  patch 'movies/update', to: 'movies#update'
+
   resources :meals
   resources :exercises
 end

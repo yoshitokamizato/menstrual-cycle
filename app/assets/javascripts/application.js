@@ -20,6 +20,7 @@
 //= require flatpickr
 //= require flatpickr/l10n/ja
 
+// カレンダー用
 var chart_temperature;
 var chart_weight;
 var chart_existence = false;
@@ -30,6 +31,9 @@ var two_weeks_ago = new Date(today.getFullYear(), today.getMonth(), today.getDat
 var a_month_ago = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
 var three_months_ago = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
 var a_year_ago = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+
+// 動画の生理周期登録用
+var operation = {list: false, date: false};
 
 // カレンダーのフォーム（flatpickr）
 $(document).on('turbolinks:load', function () {
@@ -79,6 +83,15 @@ $(document).on('turbolinks:load', function () {
         });
         // グラフの初期表示
         onButtonClickWeek();
+    }
+
+    if (document.getElementById('menstruation-date')) {
+        flatpickr('#menstruation-date', {
+            disableMobile: true,
+            defaultDate: 'today',
+            maxDate: 'today'
+        });
+        operation = {list: false, date: false};
     }
 });
 
@@ -272,5 +285,47 @@ function GetCycleRecordData() {
             button.disabled = 'disabled';
             destroy_button.disabled = 'disabled';
         }
+    }
+}
+
+// 動画表示ページ
+
+function menstrualCycleButton() {
+    operation.list = !operation.list;
+    operation.date = false;
+    menstruationDateSetting(operation);
+}
+
+function menstruationDateButton() {
+    operation.list = false;
+    operation.date = !operation.date;
+    menstruationDateSetting(operation);
+}
+
+function menstruationReturnButton() {
+    operation = {list: false, date: false};
+    menstruationDateSetting(operation);
+}
+function menstruationDateSetting() {
+    var startButton = document.getElementById('menstruation-start-button');
+    var formList = document.getElementById('menstrual-cycle-form');
+    var formDate = document.getElementById('menstruation-date-form');
+    var returnButton = document.getElementById('menstruation-return-button');
+
+    if (operation.list) {
+        startButton.style.display = 'none';
+        formList.style.display = 'block';
+        formDate.style.display = 'none';
+        returnButton.style.display = 'block';
+    } else if (operation.date) {
+        startButton.style.display = 'none';
+        formList.style.display = 'none';
+        formDate.style.display = 'block';
+        returnButton.style.display = 'block';
+    } else {
+        startButton.style.display = 'flex';
+        formList.style.display = 'none';
+        formDate.style.display = 'none';
+        returnButton.style.display = 'none';
     }
 }

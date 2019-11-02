@@ -1,0 +1,46 @@
+<%= Gon::Base.render_data %>
+<div class="container-fluid">
+  <div class="row" id="menstruation-start-button">
+    <div class="col-md-6">
+      <span class="btn-pink mx-auto my-4" id="menstrual-cycle-form-button" onClick='menstrualCycleButton()'>
+        生理周期を選択
+      </span>
+    </div>
+    <div class="col-md-6">
+      <span class="btn-pink mx-auto my-4" id="menstruation-date-button" onClick='menstruationDateButton()'>
+        前回の生理日を登録
+      </span>
+    </div>
+  </div>
+
+  <div class="cycle-form" id="menstrual-cycle-form">
+    <%= form_with model: current_user, url: movies_update_path, method: :patch, local: true do |form| %>
+      <div class="form-group">
+        <div class="cycle-date-form mx-auto">
+          <%= form.collection_select :menstrual_cycle_name, @menstrual_cycles, :id, :name, {}, {class: 'form-control'} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit '生理周期を登録', class: 'btn-pink mx-auto my-4', id: 'menstrual-cycle-button' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="cycle-form" id="menstruation-date-form">
+    <%= form_with model: current_user, url: movies_update_path, method: :patch, local: true do |form| %>
+      <div class="form-group">
+        <div class="cycle-date-form mx-auto">
+          <%= form.text_field :menstruation_date, class: 'form-control bg-white', id: 'menstruation-date' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit '前回の生理日を登録', class: 'btn-pink mx-auto my-4', id: 'menstruation-date-button' %>
+      </div>
+    <% end %>
+  </div>
+  <div id="menstruation-return-button">
+    <span class="btn-pink mx-auto my-4" onClick='menstruationReturnButton()'>戻る</span>
+  </div>
+</div>
