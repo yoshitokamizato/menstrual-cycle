@@ -4,6 +4,8 @@ ja:
       admin_user: 管理者
       comment: コメント
       user: ユーザー
+      menstruation: 生理周期
+      movie: 動画
     attributes:
       admin_user:
         email: メールアドレス
@@ -24,6 +26,11 @@ ja:
         body_temperature: 基礎体温
         body_weight: 体重
         symptom: 症状
+      menstruation:
+        name: 生理周期
+      movie:
+        menstruation_id: 生理周期ID
+        url: 動画URL
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -32,6 +39,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
   attributes:
     id: ID
+    menstruation: 生理周期
     program_id: プログラムID
     error_id: エラーID
     email: メールアドレス
