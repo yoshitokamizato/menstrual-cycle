@@ -1,2 +1,11 @@
-<%= link_to '生理周期を変更する', movies_edit_path, class: 'btn-pink mx-auto my-4' %>
-<%= current_user.menstruation_date %>
+<div class="container-fluid">
+  <div class="text-center">
+  生理周期：<%= @menstruation.name %>
+  <%= link_to '生理周期を変更する', movies_edit_path, class: 'btn-pink my-4 mx-auto' %>
+    <% @movie_ids.each do |movie_id| %>
+      <div class="py-3">
+        <%= movie(movie_id: movie_id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

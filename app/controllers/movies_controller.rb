@@ -2,8 +2,10 @@ class MoviesController < ApplicationController
   def index
     if current_user.menstruation_date.nil?
       redirect_to movies_edit_path
+    else
+      @menstruation = Menstruation.my_menstruation(current_user.menstruation_date)
+      @movie_ids = @menstruation.movies.order(id: :desc).map(&:extract_youtube_id).compact
     end
-    current_user.menstruation_date
   end
 
   def edit
@@ -23,6 +25,5 @@ class MoviesController < ApplicationController
     else
       redirect_to movies_edit_path, warning: '値が不正です'
     end
-
   end
 end

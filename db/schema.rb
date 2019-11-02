@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2019_11_02_035400) do
   end
 
   create_table "menstruations", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

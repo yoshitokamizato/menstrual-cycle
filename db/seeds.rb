@@ -39,9 +39,27 @@ ApplicationRecord.transaction do
   CycleRecord.create!(cycle_records)
   puts '生理周期記録の初期データインポートに成功しました。'
 
-  menstruation = [{name: '生理期'}, {name: '卵胞期'}, {name: '黄体期'}]
+  menstruation = [
+      {name: '生理期'},
+      {name: '卵胞期'},
+      {name: '黄体期'}
+  ]
   Menstruation.create!(menstruation)
   puts '生理周期名の初期データインポートに成功しました。'
+
+  menstruation_1 = Menstruation.first
+  menstruation_2 = Menstruation.second
+  menstruation_3 = Menstruation.last
+  movies = [
+      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck'},
+      {menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8'},
+      {menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83'},
+      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
+      {menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y'},
+      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'}
+  ]
+  Movie.create!(movies)
+  puts '動画URLの初期データインポートに成功しました。'
 end
 puts '-------------------------------------'
 puts '全ての初期データインポートに成功しました！'
