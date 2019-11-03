@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 //= require flatpickr/l10n/ja
+//= require_tree .
 
 var chart_temperature;
 var chart_weight;
