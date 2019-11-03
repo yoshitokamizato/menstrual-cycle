@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
       redirect_to movies_edit_path
     else
       @menstruation = Menstruation.my_menstruation(current_user.menstruation_date)
-      @movie_ids = @menstruation.movies.order(id: :desc).map(&:extract_youtube_id).compact
+      @movies = @menstruation.movies.order(id: :desc).page(params[:page]).per(10)
     end
   end
 

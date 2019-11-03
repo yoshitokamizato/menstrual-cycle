@@ -56,7 +56,7 @@ ApplicationRecord.transaction do
       {menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83'},
       {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
       {menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y'},
-      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'}
+      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'},
   ]
   Movie.create!(movies)
   puts '動画URLの初期データインポートに成功しました。'
