@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require Chart.min
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery3
@@ -19,6 +18,8 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 //= require flatpickr/l10n/ja
+//= require rails-ujs
+//= require_tree .
 
 // カレンダー用
 var chart_temperature;
@@ -85,6 +86,7 @@ $(document).on('turbolinks:load', function () {
         onButtonClickWeek();
     }
 
+    // 生理日登録カレンダー
     if (document.getElementById('menstruation-date')) {
         flatpickr('#menstruation-date', {
             disableMobile: true,
@@ -92,6 +94,10 @@ $(document).on('turbolinks:load', function () {
             maxDate: 'today'
         });
         operation = {list: false, date: false};
+    }
+    // 動画の遅延読み込み
+    if (document.getElementById('youtube-container')) {
+        youtubeLazyLoading();
     }
 });
 
@@ -328,4 +334,14 @@ function menstruationDateSetting() {
         formDate.style.display = 'none';
         returnButton.style.display = 'none';
     }
+}
+
+// 動画の遅延読み込み用関数（data-srcの値をsrcに移動）
+function youtubeLazyLoading() {
+    var iframes = document.querySelectorAll('.youtube');
+    iframes.forEach(function(iframe){
+        if(iframe.getAttribute('data-src')) {
+            iframe.setAttribute('src',iframe.getAttribute('data-src'));
+        }
+    });
 }
