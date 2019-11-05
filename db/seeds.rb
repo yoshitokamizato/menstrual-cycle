@@ -1,5 +1,17 @@
 ApplicationRecord.transaction do
-  AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  AdminUser.destroy_all
+  User.destroy_all
+  CycleRecord.destroy_all
+  Menstruation.destroy_all
+  Movie.destroy_all
+  puts "現在のデータを全て削除しました。"
+  puts '-------------------------------------'
+
+  if Rails.env.production?
+    AdminUser.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'])
+  else
+    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  end
   puts '管理者画面の初期データインポートに成功しました。'
 
   User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', name: '管理者', flag: true)

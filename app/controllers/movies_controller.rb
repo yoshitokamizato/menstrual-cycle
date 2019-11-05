@@ -14,12 +14,11 @@ class MoviesController < ApplicationController
 
   def update
     if params[:user][:menstrual_cycle_name]
-      minus_day = 7 * ((params[:user][:menstrual_cycle_name].to_i) - 1)
+      minus_day = 7 * Menstruation.ids.index(params[:user][:menstrual_cycle_name].to_i)
       current_user.menstruation_date = Date.today - minus_day
     else
       current_user.menstruation_date = params[:user][:menstruation_date]
     end
-
     if current_user.save
       redirect_to movies_path, success: '登録しました。'
     else
