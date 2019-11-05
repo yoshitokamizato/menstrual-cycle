@@ -17,8 +17,7 @@ class CycleRecordsController < ApplicationController
     if @cycle_record.save
       redirect_to cycle_records_path, success: '記録しました。'
     else
-      flash.now[:warning] = @cycle_record.errors.full_messages.join(", ")
-      render :new
+      output_error_messages(new_cycle_record_path)
     end
   end
 
@@ -29,19 +28,24 @@ class CycleRecordsController < ApplicationController
 
   def update
     @cycle_record = CycleRecord.find_by(date: params[:cycle_record][:date])
-    if params[:_destroy].nil?
+    if @cycle_record.nil?
+      error_message = "#{params[:cycle_record][:date].gsub(/-0*/, '/')}の記録がありません。"
+      flash.now[:warning] = error_message
+      respond_to do |format|
+        format.html { redirect_to cycle_records_edit_path, warning: error_message }
+        format.js
+      end
+    elsif params[:_destroy].nil?
       if @cycle_record.update(cycle_record_params)
         redirect_to cycle_records_path, success: '記録を修正しました。'
       else
-        flash.now[:warning] = @cycle_record.errors.full_messages.join(", ")
-        render :edit
+        output_error_messages(cycle_records_edit_path)
       end
     else
       if @cycle_record.destroy
         redirect_to cycle_records_path, success: '記録を削除しました。'
       else
-        flash.now[:warning] = @cycle_record.errors.full_messages.join(", ")
-        render :edit
+        output_error_messages(cycle_records_edit_path)
       end
     end
   end
@@ -50,5 +54,13 @@ class CycleRecordsController < ApplicationController
 
   def cycle_record_params
     params.require(:cycle_record).permit(:date, :body_temperature, :body_weight, :symptom)
+  end
+
+  def output_error_messages(path)
+    flash.now[:warning] = error_message = @cycle_record.errors.full_messages.join(", ")
+    respond_to do |format|
+      format.html { redirect_to path, warning: error_message }
+      format.js
+    end
   end
 end

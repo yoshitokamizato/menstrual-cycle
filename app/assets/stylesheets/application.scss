@@ -150,21 +150,10 @@ a.btn-pink {
 
 #youtube-container {
   max-width: 590px;
-}
-
-.youtube-wrap {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%;
-  overflow: hidden;
-}
-
-.youtube-wrap iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
+  @media screen and (max-width: 560px) {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+  }
 }
 
 // ページネーション

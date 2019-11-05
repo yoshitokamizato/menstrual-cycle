@@ -6,7 +6,7 @@
     <%= paginate @movies %>
     <div class="mx-auto" id="youtube-container">
       <% @movies.each do |movie| %>
-        <div class="youtube-wrap my-4">
+        <div class="embed-responsive embed-responsive-16by9 my-4">
           <%= movie(url: movie.url) %>
         </div>
       <% end %>

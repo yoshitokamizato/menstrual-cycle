@@ -10,7 +10,7 @@ module MovieHelper
           '',
           width: 560,
           height: 315,
-          class: 'youtube',
+          class: 'youtube embed-responsive-item',
           data: {src: "https://www.youtube.com/embed/#{video_id}"},
           frameborder: 0,
           allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",

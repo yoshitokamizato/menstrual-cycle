@@ -26,12 +26,13 @@ var chart_temperature;
 var chart_weight;
 var chart_existence = false;
 
-var today = new Date();
+var today = new Date(new Date().setHours(0, 0, 0, 0));
 var a_week_ago = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6);
 var two_weeks_ago = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 13);
 var a_month_ago = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
 var three_months_ago = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
 var a_year_ago = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+
 
 // 動画の生理周期登録用
 var operation = {list: false, date: false};
@@ -104,7 +105,7 @@ $(document).on('turbolinks:load', function () {
 // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数
 function drawGraphs(from, to) {
     var cycle_records = gon.cycle_records.filter(function (record) {
-        date = new Date(record.date);
+        var date = new Date(record.date).setHours(0, 0, 0, 0);
         return from <= date && date <= to;
     });
     var dates_data = cycle_records.map(function (record) {
@@ -219,13 +220,13 @@ function inputDate(date_id, date) {
 
 // 期間指定のボタン機能
 function onButtonClickPeriod() {
-    var from = new Date(document.getElementById('start-date').value);
-    var to = new Date(document.getElementById('end-date').value);
+    var from = new Date(document.getElementById('start-date').value + ' 00:00:00');
+    var to = new Date(document.getElementById('end-date').value + ' 00:00:00');
     var three_months_later = new Date(from.getFullYear(), from.getMonth() + 3, from.getDate());
 
-    if (from.getTime() > to.getTime()) {
+    if (from > to) {
         alert('指定期間を正しく入力して下さい。');
-    } else if (three_months_later.getTime() < to.getTime()) {
+    } else if (three_months_later < to) {
         alert('期間は３ヶ月以内として下さい。');
         drawGraphs(from, three_months_later);
     } else {
@@ -236,9 +237,9 @@ function onButtonClickPeriod() {
 // 過去◯日間のボタン機能
 function onButtonClickPast(from) {
     // 過去◯日前のデータが無い場合は，最も古いデータを開始日とする
-    var start_date = new Date(gon.start_date);
+    var start_date = new Date(gon.start_date + ' 00:00:00');
 
-    if (start_date.getTime() < from.getTime()) {
+    if (start_date < from) {
         start_date = from;
     }
 
