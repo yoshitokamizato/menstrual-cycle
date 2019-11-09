@@ -1,0 +1,2 @@
+class Monologue < ApplicationRecord
+end

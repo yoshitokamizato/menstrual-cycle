@@ -8,14 +8,14 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     // Called when the subscription has been terminated by the server
   },
 
-  received: function(message) {
+  received: function(monologue) {
     // Called when there's incoming data on the websocket for this channel
-    const messages = document.getElementById('messages')
-    messages.innerHTML += `<p>${message}</p>`
+    const monologues = document.getElementById('monologues')
+    monologues.innerHTML += `<p>${monologue}</p>`
   },
 
   speak: function(content) {
-    return this.perform('speak', {message: content});
+    return this.perform('speak', {monologue: content});
   }
 });
 
