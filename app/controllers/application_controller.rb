@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   # ニックネームも編集できるようにするための設定
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
 
   protected
 
