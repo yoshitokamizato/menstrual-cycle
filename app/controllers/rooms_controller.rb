@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
   def show
-    @monologues = Monologue.all.order(created_at: "DESC")
+    @monologues = Monologue.all
   end
 end
