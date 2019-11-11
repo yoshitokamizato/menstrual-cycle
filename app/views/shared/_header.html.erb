@@ -9,12 +9,13 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown active">
             <a href="#" class="nav-link dropdown-toggle" id="cycle_records_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              生理周期記録管理
+              生理周期記録
             </a>
             <div class="dropdown-menu" aria-labelledby="cycle_records_option">
               <%= link_to "新規記録", new_cycle_record_path, class: 'dropdown-item' %>
               <%= link_to "記録の修正", cycle_records_edit_path, class: 'dropdown-item' %>
               <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
+              <%= link_to "動画", movies_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item dropdown active">
