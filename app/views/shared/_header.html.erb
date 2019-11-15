@@ -36,6 +36,9 @@
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
             </div>
           </li>
+          <li class="nav-item dropdown active">
+              <%= link_to '独り言', '/rooms/show', class: 'dropdown-item', id: 'nav-sign-edit' %>
+          </li>
         <% else %>
           <li class="nav-item active">
             <%= link_to "ログイン", new_user_session_path, class: 'nav-link', id: 'nav-sign-in' %>

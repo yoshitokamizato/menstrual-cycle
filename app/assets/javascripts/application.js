@@ -294,6 +294,8 @@ function GetCycleRecordData() {
         }
     }
 }
+<<<<<<< HEAD
+=======
 
 // 動画表示ページ
 
@@ -346,3 +348,4 @@ function youtubeLazyLoading() {
         }
     });
 }
+>>>>>>> master
