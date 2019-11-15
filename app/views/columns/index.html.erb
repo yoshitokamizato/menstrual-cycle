@@ -1,0 +1,14 @@
+<div class="container-fluid container-cycle">
+  <%= paginate @columns %>
+  <% @columns.each do |column| %>
+    <hr class="border-dark">
+    <p class="d-flex align-items-center">
+      <span class="column-title mr-5"><%= column.title %></span>
+        <span>【公開日】<%= l column.created_at, format: :date %></span>
+    </p>
+    <hr>
+    <div><%= simple_format(column.content) %></div>
+  <% end %>
+  <hr class="border-dark">
+  <%= paginate @columns %>
+</div>

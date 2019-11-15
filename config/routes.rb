@@ -24,4 +24,5 @@ Rails.application.routes.draw do
 
   resources :meals
   resources :exercises
+  resources :columns, only: :index
 end

@@ -38,7 +38,7 @@ var a_year_ago = new Date(today.getFullYear() - 1, today.getMonth(), today.getDa
 var operation = {list: false, date: false};
 
 // カレンダーのフォーム（flatpickr）
-$(document).on('turbolinks:load', function () {
+document.addEventListener("turbolinks:load", function() {
     flatpickr.localize(flatpickr.l10ns.ja);
     // 新規記録ページ用カレンダー
     if (document.getElementById('cycle-record-date-new')) {

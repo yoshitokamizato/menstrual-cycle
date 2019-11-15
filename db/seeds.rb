@@ -1,9 +1,12 @@
+columns_number = 25
+
 ApplicationRecord.transaction do
   AdminUser.destroy_all
   User.destroy_all
   CycleRecord.destroy_all
   Menstruation.destroy_all
   Movie.destroy_all
+  Column.destroy_all
   puts "現在のデータを全て削除しました。"
   puts '-------------------------------------'
 
@@ -38,11 +41,11 @@ ApplicationRecord.transaction do
       body_weight = rand(460..480).to_f / 10
       symptom = (body_temperature < 36.65) ? '低温期です' : '高温期です'
       cycle_records << {
-          user_id: user.id,
-          date: date,
-          body_temperature: body_temperature,
-          body_weight: body_weight,
-          symptom: symptom
+        user_id: user.id,
+        date: date,
+        body_temperature: body_temperature,
+        body_weight: body_weight,
+        symptom: symptom
       }
     end
   end
@@ -52,9 +55,9 @@ ApplicationRecord.transaction do
   puts '生理周期記録の初期データインポートに成功しました。'
 
   menstruation = [
-      {name: '生理期'},
-      {name: '卵胞期'},
-      {name: '黄体期'}
+    {name: '生理期'},
+    {name: '卵胞期'},
+    {name: '黄体期'}
   ]
   Menstruation.create!(menstruation)
   puts '生理周期名の初期データインポートに成功しました。'
@@ -63,26 +66,47 @@ ApplicationRecord.transaction do
   menstruation_2 = Menstruation.second
   menstruation_3 = Menstruation.last
   movies = [
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck'},
-      {menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HnkdknrWu8'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=EfSm96IomiU'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=wxART4__ruY'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8'},
-      {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=ciDWKE_CO54'},
-      {menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83'},
-      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
-      {menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y'},
-      {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck'},
+    {menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HnkdknrWu8'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=EfSm96IomiU'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=wxART4__ruY'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8'},
+    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=ciDWKE_CO54'},
+    {menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83'},
+    {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
+    {menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y'},
+    {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'},
   ]
   Movie.create!(movies)
   puts '動画URLの初期データインポートに成功しました。'
+
+  columns = []
+  columns_number.times do |n|
+    content = <<~TEXT
+      こちらはテスト投稿その#{n + 1}です。
+      ちゃんと改行が反映されているかチェックしています。
+      大丈夫そうですね！
+    TEXT
+    columns << {
+      title: "テスト投稿 その#{n + 1}",
+      content: content,
+    }
+  end
+
+  Column.create!(columns)
+  Column.all.each_with_index do |column, n|
+    column.created_at -= (columns_number - n).day
+    column.save!
+  end
+
+  puts 'コラムの初期データインポートに成功しました。'
 end
 puts '-------------------------------------'
 puts '全ての初期データインポートに成功しました！'
