@@ -348,4 +348,8 @@ function youtubeLazyLoading() {
         }
     });
 }
+
+$(document).on('turbolinks:load', function () {
+    window.scroll(0, $(document).height());
+});
 >>>>>>> master
