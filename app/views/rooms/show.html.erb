@@ -1,10 +1,16 @@
 <h1>Chat Room</h1>
 
-<form>
-  <input type="text" id="chat-input" class="form-control" />
-  <button id="button">送信</button>
-</form>
-
-<div id="monologues">
+<div id="monologues" class="monologues">
   <%= render @monologues %>
 </div>
+
+<form>
+  <input type="text" id="chat-input" />
+  <button type="button" id="button" onclick="test();">送信</button>
+</form>
+
+<script>
+  var element = document.document.getElementById(monologues);
+  var bottom = element.scrollHeight - element.clientHeight;
+  window.scroll(0, bottom);
+</script>
