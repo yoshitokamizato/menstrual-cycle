@@ -100,6 +100,9 @@ $(document).on('turbolinks:load', function () {
     if (document.getElementById('youtube-container')) {
         youtubeLazyLoading();
     }
+    if ($('#scrolldown').length) {
+      window.scroll(0, $(document).height());
+    }
 });
 
 // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数
@@ -294,8 +297,6 @@ function GetCycleRecordData() {
         }
     }
 }
-<<<<<<< HEAD
-=======
 
 // 動画表示ページ
 
@@ -348,4 +349,3 @@ function youtubeLazyLoading() {
         }
     });
 }
->>>>>>> master

@@ -1,10 +1,10 @@
-<h1>Chat Room</h1>
+<h1 id="scrolldown">Chat Room</h1>
 
-<form>
-  <input type="text" id="chat-input" class="form-control" />
-  <button id="button">送信</button>
-</form>
-
-<div id="monologues">
+<div id="monologues" class="contents">
   <%= render @monologues %>
 </div>
+
+<form class="input">
+  <input type="text" id="chat-input" />
+  <button id="button">送信</button>
+</form>
