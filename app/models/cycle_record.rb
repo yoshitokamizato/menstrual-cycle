@@ -15,9 +15,7 @@ class CycleRecord < ApplicationRecord
 
     start_date = cycle_records.first.date
     last_date = cycle_records.last.date
-    if last_date < today
-      last_date = today
-    end
+    last_date = today if last_date < today
 
     period = start_date..last_date
 

@@ -36,6 +36,10 @@ gem 'gon'
 # カレンダーフォーム
 gem 'flatpickr'
 
+# 動画投稿機能
+gem 'kaminari'
+gem 'font-awesome-sass'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
