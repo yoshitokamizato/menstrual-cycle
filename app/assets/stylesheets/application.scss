@@ -7,22 +7,11 @@
 @import "font-awesome";
 
 // フッターを一番下に配置する設定を含む
-html {
-  height: 100%;
-}
-
 body {
   font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
   "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
   "MS PGothic", sans-serif;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
   background-color: #fef;
-
-  div.content {
-    flex: 1;
-  }
 }
 
 // ログイン画面
@@ -174,4 +163,50 @@ a.btn-pink {
 
 .pagination > li > a:hover {
   background: #fbf;
+}
+
+// 独り言
+
+.input {
+  position: fixed; bottom: 0px;
+}
+
+.contents {
+  padding-bottom: 40px;
+}
+
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #adff2f;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #adff2f;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
 }

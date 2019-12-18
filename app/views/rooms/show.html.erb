@@ -1,10 +1,12 @@
 <h1>Chat Room</h1>
 
-<form>
-  <input type="text" id="chat-input" class="form-control" />
-  <button id="button">送信</button>
-</form>
-
-<div id="monologues">
+<div id="monologues" class="contents">
   <%= render @monologues %>
 </div>
+
+<form class="form-inline input">
+    <div class="form-group">
+      <input required type="text" id="chat-input" class="form-control" size="50" placeholder="メッセージを入力"/>
+    </div>
+    <button id="button" class="btn btn-primary">送信</button>
+</form>

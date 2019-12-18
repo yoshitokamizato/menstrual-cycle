@@ -294,8 +294,6 @@ function GetCycleRecordData() {
         }
     }
 }
-<<<<<<< HEAD
-=======
 
 // 動画表示ページ
 
@@ -348,4 +346,19 @@ function youtubeLazyLoading() {
         }
     });
 }
->>>>>>> master
+
+// 独り言機能の送信ボタン無効化切り替え
+$(function() {
+  $("#button").prop("disabled", true);
+  $('form input:required').change(function () {
+    var input_value = $('#chat-input').val();
+    if (input_value == "") {
+      $("#button").prop("disabled", true);
+    } else {
+      $("#button").prop("disabled", false);
+    }
+  });
+  $('#button').click(function() {
+    $("#button").prop("disabled", true);
+  });
+});
