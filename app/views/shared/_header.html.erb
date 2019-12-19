@@ -37,7 +37,7 @@
             </div>
           </li>
           <li class="nav-item dropdown active">
-              <%= link_to '独り言', '/rooms/show', class: 'dropdown-item', id: 'nav-sign-edit' %>
+              <%= link_to '独り言', '/rooms/show', data: {"turbolinks" => false}, class: 'dropdown-item', id: 'nav-sign-edit' %>
           </li>
         <% else %>
           <li class="nav-item active">
