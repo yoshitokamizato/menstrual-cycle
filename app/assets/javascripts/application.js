@@ -349,16 +349,12 @@ function youtubeLazyLoading() {
 
 // 独り言機能の送信ボタン無効化切り替え
 $(function() {
-  $("#button").prop("disabled", true);
-  $('form input:required').change(function () {
+  $('#chat-input').bind('keydown keyup keypress change', function () {
     var input_value = $('#chat-input').val();
     if (input_value == "") {
       $("#button").prop("disabled", true);
     } else {
       $("#button").prop("disabled", false);
     }
-  });
-  $('#button').click(function() {
-    $("#button").prop("disabled", true);
-  });
-});
+  })
+})
