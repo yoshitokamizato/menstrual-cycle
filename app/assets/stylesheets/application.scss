@@ -1,6 +1,7 @@
 /* ...
 *= require flatpickr
 *= require flatpickr/themes/material_orange
+*= require jquery.ezdz
 */
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -242,4 +243,9 @@ a.btn-pink-ellipse {
 .says p {
   margin: 0;
   padding: 0;
+}
+
+// ドラッグ＆ドロップ（初期画像）
+#current-image {
+  display: none;
 }

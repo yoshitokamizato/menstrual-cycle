@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 //= require flatpickr/l10n/ja
+//= require jquery.ezdz
 //= require rails-ujs
 //= require_tree .
 
@@ -121,6 +122,19 @@ document.addEventListener("turbolinks:load", function () {
             chatButton.disabled = chatContent === "";
         })
     }
+
+    // 画像投稿フォーム（ドラッグ＆ドロップ）
+    $('#image-form').ezdz({
+        text: '画像',
+        validators: {
+            maxSize: 3 * 1024 * 1024
+        },
+        reject: function (file, errors) {
+            if (errors.maxSize) {
+                alert('画像サイズは3MB以下として下さい');
+            }
+        }
+    });
 });
 
 // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数

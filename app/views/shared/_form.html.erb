@@ -2,11 +2,8 @@
   <div class="form-group">
     <%= f.select :menstrual_cycle, %w(生理期 卵胞期 黄体期), {}, class: 'form-control' %>
   </div>
-  <% if image.present? %>
-    <div><%= image_tag image %></div>
-  <% end %>
   <div class="form-group">
-    <%= f.file_field :image, class: 'form-control-file', accept: 'image/*' %>
+    <%= f.file_field :image, id: 'image-form', accept: 'image/png, image/jpeg, image/gif' %>
   </div>
   <div class="form-group">
     <%= f.text_area :comment, class: 'form-control', rows: '5' %>
