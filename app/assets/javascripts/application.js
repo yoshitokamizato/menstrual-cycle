@@ -100,6 +100,27 @@ document.addEventListener("turbolinks:load", function () {
     if (document.getElementById('youtube-container')) {
         youtubeLazyLoading();
     }
+
+    // チャット用
+
+    const chatInput = document.getElementById('chat-input')
+    const chatButton = document.getElementById('chat-button')
+
+    if (chatInput) {
+        let chatContent
+        chatButton.addEventListener('click', function () {
+            chatContent = chatInput.value
+            App.room.speak(chatContent)
+            chatInput.value = ''
+        })
+
+        window.scroll(0, document.documentElement.scrollHeight)
+
+        chatInput.addEventListener('input', () => {
+            chatContent = chatInput.value
+            chatButton.disabled = chatContent === "";
+        })
+    }
 });
 
 // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数
@@ -347,15 +368,3 @@ function youtubeLazyLoading() {
         }
     });
 }
-
-// 独り言機能の送信ボタン無効化切り替え
-$(function () {
-    $('#chat-input').bind('keydown keyup keypress change', function () {
-        var input_value = $('#chat-input').val();
-        if (input_value == "") {
-            $("#button").prop("disabled", true);
-        } else {
-            $("#button").prop("disabled", false);
-        }
-    })
-})

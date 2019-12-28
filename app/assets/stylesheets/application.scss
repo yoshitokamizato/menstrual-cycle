@@ -101,8 +101,32 @@ input.btn-calendar {
   }
 }
 
-// ボタン
-.btn-pink {
+// ボタン（Bootstrap ピンク色）
+
+.btn-main {
+  @extend .btn-primary;
+  background: #f7f; //ボタンの背景色
+  border-color: #f7f;
+  color: white; //ボタンのテキストの色
+}
+
+.btn-main:hover, .btn-main:focus,
+.btn-main:active, .btn-main:active:focus, .btn-main:active:hover, .btn-main:active.focus,
+.btn-main.active, .btn-main.active:focus, .btn-main.active:hover, .btn-main.active.focus,
+.open > .dropdown-toggle.btn-main,
+.open > .dropdown-toggle.btn-main:hover,
+.open > .dropdown-toggle.btn-main:focus,
+.open > .dropdown-toggle.btn-main.focus,
+.btn-main.disabled:hover, .btn-main[disabled]:hover, fieldset[disabled] .btn-main:hover,
+.btn-main.disabled:focus, .btn-main[disabled]:focus, fieldset[disabled] .btn-main:focus,
+.btn-main.disabled.focus, .btn-main[disabled].focus, fieldset[disabled] .btn-main.focus {
+  background: #F5F; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+  border-color: #F5F;
+  color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+// 動画用のボタン
+.btn-pink-ellipse {
   width: 280px;
   height: 70px;
   line-height: 70px;
@@ -119,11 +143,11 @@ input.btn-calendar {
   transition: all 0.5s ease;
 }
 
-a.btn-pink {
+a.btn-pink-ellipse {
   text-decoration: none;
 }
 
-.btn-pink:hover {
+.btn-pink-ellipse:hover {
   background: #FF88EE;
   color: #FFFC00;
 }
@@ -200,7 +224,7 @@ a.btn-pink {
   padding: 10px;
   max-width: 250px;
   border-radius: 12px;
-  background: #adff2f;
+  background: #fcf;
 }
 
 .says:after {
@@ -210,7 +234,7 @@ a.btn-pink {
   top: 3px;
   left: -19px;
   border: 8px solid transparent;
-  border-right: 18px solid #adff2f;
+  border-right: 18px solid #fcf;
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }

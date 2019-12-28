@@ -2,18 +2,18 @@
 <div class="container-fluid">
   <div class="row" id="menstruation-start-button">
     <div class="col-md-6">
-      <span class="btn-pink mx-auto my-4" id="menstrual-cycle-form-button" onClick='menstrualCycleButton()'>
+      <span class="btn-pink-ellipse mx-auto my-4" id="menstrual-cycle-form-button" onClick='menstrualCycleButton()'>
         生理周期を選択
       </span>
     </div>
     <div class="col-md-6">
-      <span class="btn-pink mx-auto my-4" id="menstruation-date-button" onClick='menstruationDateButton()'>
+      <span class="btn-pink-ellipse mx-auto my-4" id="menstruation-date-button" onClick='menstruationDateButton()'>
         前回の生理日を登録
       </span>
     </div>
     <% if current_user.menstruation_date.present? %>
       <div class="col-12">
-      <%= link_to '動画一覧に戻る', movies_path, class: 'btn-pink my-4 mx-auto' %>
+      <%= link_to '動画一覧に戻る', movies_path, class: 'btn-pink-ellipse my-4 mx-auto' %>
       </div>
     <% end %>
   </div>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-group">
-        <%= form.submit '生理周期を登録', class: 'btn-pink mx-auto my-4', id: 'menstrual-cycle-button' %>
+        <%= form.submit '生理周期を登録', class: 'btn-pink-ellipse mx-auto my-4', id: 'menstrual-cycle-button' %>
       </div>
     <% end %>
   </div>
@@ -41,11 +41,11 @@
       </div>
 
       <div class="form-group">
-        <%= form.submit '前回の生理日を登録', class: 'btn-pink mx-auto my-4', id: 'menstruation-date-button' %>
+        <%= form.submit '前回の生理日を登録', class: 'btn-pink-ellipse mx-auto my-4', id: 'menstruation-date-button' %>
       </div>
     <% end %>
   </div>
   <div id="menstruation-return-button">
-    <span class="btn-pink mx-auto my-4" onClick='menstruationReturnButton()'>戻る</span>
+    <span class="btn-pink-ellipse mx-auto my-4" onClick='menstruationReturnButton()'>戻る</span>
   </div>
 </div>

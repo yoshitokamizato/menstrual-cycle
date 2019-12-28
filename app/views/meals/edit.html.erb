@@ -1,10 +1,6 @@
-<%= form_for @meal, url: meal_path(@meal), html: { method: :patch } do |f| %>
-  <p>更新</p>
-  <p>生理周期：<%= f.text_field :menstrual_cycle %></p>
-  <p><%= image_tag @meal.image.url(:thumb) %></p>
-  <p><%= f.file_field :image %></p>
-  <p><%= f.text_area :comment %></p>
-  <input type="submit" value="送信">
-<% end %>
-<hr>
-<%= link_to "食事投稿一覧へ", meals_path %>
+<div class="container-cycle">
+  <p>食事記録更新</p>
+  <%= render 'shared/form', model: @meal, value: '更新', image: @meal.image.url(:thumb) %>
+  <hr>
+  <%= link_to "食事投稿一覧へ", meals_path %>
+</div>

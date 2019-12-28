@@ -1,9 +1,6 @@
-<%= form_for @exercise, url: exercises_path, html: { method: :post } do |f| %>
-  <p>運動新規投稿</p>
-  <p>生理周期：<%= f.text_field :menstrual_cycle %></p>
-  <p><%= f.file_field :image %></p>
-  <p><%= f.text_area :comment %></p>
-  <input type="submit" value="送信">
-<% end %>
-<hr>
-<%= link_to "運動投稿一覧へ", exercises_path %>
+<div class="container-cycle">
+  <h1>運動新規投稿</h1>
+  <%= render 'shared/form', model: @exercise, value: '送信', image: '' %>
+  <hr>
+  <%= link_to "運動投稿一覧へ", exercises_path %>
+</div>
