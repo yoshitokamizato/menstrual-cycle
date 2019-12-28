@@ -12,6 +12,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     // Called when there's incoming data on the websocket for this channel
     const monologues = document.getElementById('monologues')
     monologues.innerHTML += `<p>${monologue}</p>`
+    window.scroll(0, $(document).height());
   },
 
   speak: function(content) {
@@ -27,4 +28,5 @@ document.addEventListener('DOMContentLoaded', function() {
     App.room.speak(content)
     input.value = ''
   })
+  window.scroll(0, $(document).height());
 })
