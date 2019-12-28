@@ -40,6 +40,10 @@ gem 'flatpickr'
 gem 'kaminari'
 gem 'font-awesome-sass'
 
+# マークダウン
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 

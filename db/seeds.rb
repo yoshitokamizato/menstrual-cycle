@@ -55,9 +55,9 @@ ApplicationRecord.transaction do
   puts '生理周期記録の初期データインポートに成功しました。'
 
   menstruation = [
-    {name: '生理期'},
-    {name: '卵胞期'},
-    {name: '黄体期'}
+    { name: '生理期' },
+    { name: '卵胞期' },
+    { name: '黄体期' }
   ]
   Menstruation.create!(menstruation)
   puts '生理周期名の初期データインポートに成功しました。'
@@ -66,39 +66,82 @@ ApplicationRecord.transaction do
   menstruation_2 = Menstruation.second
   menstruation_3 = Menstruation.last
   movies = [
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck'},
-    {menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HnkdknrWu8'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=EfSm96IomiU'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=wxART4__ruY'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8'},
-    {menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=ciDWKE_CO54'},
-    {menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83'},
-    {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk'},
-    {menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y'},
-    {menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U'},
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck' },
+    { menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HnkdknrWu8' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=EfSm96IomiU' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=wxART4__ruY' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8' },
+    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=ciDWKE_CO54' },
+    { menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83' },
+    { menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
+    { menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y' },
+    { menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U' },
   ]
   Movie.create!(movies)
   puts '動画URLの初期データインポートに成功しました。'
 
   columns = []
-  columns_number.times do |n|
+  (columns_number - 1).times do |n|
     content = <<~TEXT
       こちらはテスト投稿その#{n + 1}です。
-      ちゃんと改行が反映されているかチェックしています。
-      大丈夫そうですね！
     TEXT
     columns << {
       title: "テスト投稿 その#{n + 1}",
       content: content,
     }
   end
+  last_content = <<~TEXT
+  
+# 見出し1
+## 見出し2
+### 見出し3
+#### 見出し4
+##### 見出し5
+###### 見出し6
+
+1. リスト1
+
+1. リスト1
+1. リスト2
+2. リスト3
+
+1. リスト2
+10. リスト3
+
+**強調**
+*イタリック*
+
+***
+
+`1行のコード`
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>HTMLの書き方</title>
+  </head>
+  <body>
+    <h1>HTMLの書き方</h1>
+    <p>はじめてのHTMLを作りました</p>
+  </body>
+</html>
+```
+
+[Google](https://www.google.com/)
+  TEXT
+  columns << {
+    title: "テスト投稿 その#{columns_number}",
+    content: last_content
+  }
 
   Column.create!(columns)
   Column.all.each_with_index do |column, n|

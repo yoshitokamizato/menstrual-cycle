@@ -7,7 +7,7 @@
         <span>【公開日】<%= l column.created_at, format: :date %></span>
     </p>
     <hr>
-    <div><%= simple_format(column.content) %></div>
+    <div><%= markdown(column.content).html_safe %></div>
   <% end %>
   <hr class="border-dark">
   <%= paginate @columns %>
