@@ -38,7 +38,7 @@ var a_year_ago = new Date(today.getFullYear() - 1, today.getMonth(), today.getDa
 var operation = {list: false, date: false};
 
 // カレンダーのフォーム（flatpickr）
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function () {
     flatpickr.localize(flatpickr.l10ns.ja);
     // 新規記録ページ用カレンダー
     if (document.getElementById('cycle-record-date-new')) {
@@ -313,6 +313,7 @@ function menstruationReturnButton() {
     operation = {list: false, date: false};
     menstruationDateSetting(operation);
 }
+
 function menstruationDateSetting() {
     var startButton = document.getElementById('menstruation-start-button');
     var formList = document.getElementById('menstrual-cycle-form');
@@ -340,9 +341,21 @@ function menstruationDateSetting() {
 // 動画の遅延読み込み用関数（data-srcの値をsrcに移動）
 function youtubeLazyLoading() {
     var iframes = document.querySelectorAll('.youtube');
-    iframes.forEach(function(iframe){
-        if(iframe.getAttribute('data-src')) {
-            iframe.setAttribute('src',iframe.getAttribute('data-src'));
+    iframes.forEach(function (iframe) {
+        if (iframe.getAttribute('data-src')) {
+            iframe.setAttribute('src', iframe.getAttribute('data-src'));
         }
     });
 }
+
+// 独り言機能の送信ボタン無効化切り替え
+$(function () {
+    $('#chat-input').bind('keydown keyup keypress change', function () {
+        var input_value = $('#chat-input').val();
+        if (input_value == "") {
+            $("#button").prop("disabled", true);
+        } else {
+            $("#button").prop("disabled", false);
+        }
+    })
+})

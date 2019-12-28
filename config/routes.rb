@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :meals
   resources :exercises
   resources :columns, only: :index
+  resources :rooms, only: [:show]
+  mount ActionCable.server => '/cable'
 end
