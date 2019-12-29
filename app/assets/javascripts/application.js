@@ -104,22 +104,27 @@ document.addEventListener("turbolinks:load", function () {
 
     // チャット用
 
-    const chatInput = document.getElementById('chat-input')
-    const chatButton = document.getElementById('chat-button')
+    window.chatInput = document.getElementById('chat-input')
+    window.chatButton = document.getElementById('chat-button')
 
     if (chatInput) {
         let chatContent
-        chatButton.addEventListener('click', function () {
-            chatContent = chatInput.value
-            App.room.speak(chatContent)
-            chatInput.value = ''
-        })
+    //
+    //     chatButton.addEventListener('click', function () {
+    //         chatContent = chatInput.value
+    //         App.room.speak(chatContent)
+    //         chatInput.value = ''
+    //     })
 
         window.scroll(0, document.documentElement.scrollHeight)
 
         chatInput.addEventListener('input', () => {
             chatContent = chatInput.value
-            chatButton.disabled = chatContent === "";
+            if (chatContent === "") {
+                chatButton.classList.add('disabled')
+            } else {
+                chatButton.classList.remove('disabled')
+            }
         })
     }
 
@@ -127,11 +132,11 @@ document.addEventListener("turbolinks:load", function () {
     $('#image-form').ezdz({
         text: '画像',
         validators: {
-            maxSize: 3 * 1024 * 1024
+            maxSize: 5 * 1024 * 1024
         },
         reject: function (file, errors) {
             if (errors.maxSize) {
-                alert('画像サイズは3MB以下として下さい');
+                alert('画像サイズは5MB以下として下さい');
             }
         }
     });

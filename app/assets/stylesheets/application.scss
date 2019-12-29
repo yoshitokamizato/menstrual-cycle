@@ -102,30 +102,6 @@ input.btn-calendar {
   }
 }
 
-// ボタン（Bootstrap ピンク色）
-
-.btn-main {
-  @extend .btn-primary;
-  background: #f7f; //ボタンの背景色
-  border-color: #f7f;
-  color: white; //ボタンのテキストの色
-}
-
-.btn-main:hover, .btn-main:focus,
-.btn-main:active, .btn-main:active:focus, .btn-main:active:hover, .btn-main:active.focus,
-.btn-main.active, .btn-main.active:focus, .btn-main.active:hover, .btn-main.active.focus,
-.open > .dropdown-toggle.btn-main,
-.open > .dropdown-toggle.btn-main:hover,
-.open > .dropdown-toggle.btn-main:focus,
-.open > .dropdown-toggle.btn-main.focus,
-.btn-main.disabled:hover, .btn-main[disabled]:hover, fieldset[disabled] .btn-main:hover,
-.btn-main.disabled:focus, .btn-main[disabled]:focus, fieldset[disabled] .btn-main:focus,
-.btn-main.disabled.focus, .btn-main[disabled].focus, fieldset[disabled] .btn-main.focus {
-  background: #F5F; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-  border-color: #F5F;
-  color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
-}
-
 // 動画用のボタン
 .btn-pink-ellipse {
   width: 280px;
@@ -192,60 +168,49 @@ a.btn-pink-ellipse {
 
 // コラム
 
+.chat-form {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #fef;
+}
+
 .column-title {
   font-size: 1.4rem;
 }
 
 // 独り言
 
-.input {
-  position: fixed;
-  bottom: 0;
-}
-
 .contents {
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 }
 
-.balloon6 {
-  width: 100%;
+.chat-balloon {
   margin: 10px 0;
-  overflow: hidden;
 }
 
-.balloon6 .chatting {
-  width: 100%;
-  text-align: left;
-}
-
-.says {
-  display: inline-block;
+.chat-says {
   position: relative;
-  margin: 0 0 0 50px;
+  display: inline-block;
+  margin: 0 0 0 10px;
   padding: 10px;
-  max-width: 250px;
   border-radius: 12px;
   background: #fcf;
+  word-break: break-all;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #fcf;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
 }
 
-.says:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 3px;
-  left: -19px;
-  border: 8px solid transparent;
-  border-right: 18px solid #fcf;
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
-}
-
-.says p {
+.chat-says p {
   margin: 0;
   padding: 0;
-}
-
-// ドラッグ＆ドロップ（初期画像）
-#current-image {
-  display: none;
 }

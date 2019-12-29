@@ -1,0 +1,4 @@
+document.getElementById('monologues').insertAdjacentHTML('beforeend', '<%= j(render @monologue) %>')
+chatInput.value = ''
+chatButton.classList.add('disabled')
+window.scroll(0, document.documentElement.scrollHeight)

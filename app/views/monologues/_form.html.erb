@@ -1,0 +1,8 @@
+<div class="fixed-bottom chat-form py-2">
+  <%= form_with model: current_user.monologues.build, class: 'd-flex' do |f| %>
+    <%= f.text_field :content, class: 'form-control mr-1', id: 'chat-input' %>
+    <div class="form-group my-0">
+      <%= f.submit '送 信', class: 'btn btn-primary btn-block disabled', id: 'chat-button' %>
+    </div>
+  <% end %>
+</div>

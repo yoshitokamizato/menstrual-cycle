@@ -44,6 +44,8 @@ ja:
       timeout: セッションがタイムアウトしました。もう一度ログインしてください。
       unauthenticated: ログインしてください。
       unconfirmed: メールアドレスの本人確認が必要です。
+      user:
+        message_that_flag_is_false: このアカウントには利用権限がありません。
     mailer:
       confirmation_instructions:
         action: メールアドレスの確認

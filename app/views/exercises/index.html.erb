@@ -1,5 +1,5 @@
 <div class="container-cycle">
-  <%= link_to "運動投稿画面へ", new_exercise_path %>
+  <%= link_to "運動投稿画面へ", new_exercise_path, class: 'btn btn-primary btn-block' %>
   <% @exercises.each do |exercise| %>
     <hr>
     <p>生理周期：<%= exercise.menstrual_cycle %></p>
@@ -10,6 +10,4 @@
       <%= link_to "編集", edit_exercise_path(exercise), method: :get %>
     </p>
   <% end %>
-  <hr>
-  <%= link_to "TOPへ", root_path %>
 </div>

@@ -76,5 +76,9 @@ group :test do
   gem 'rspec_junit_formatter'
 end
 
+group :production do
+  gem 'fog'
+end
+
 # Windows環境での開発ではないので削除
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

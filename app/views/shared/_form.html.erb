@@ -6,7 +6,7 @@
     <%= f.file_field :image, id: 'image-form', accept: 'image/png, image/jpeg, image/gif' %>
   </div>
   <div class="form-group">
-    <%= f.text_area :comment, class: 'form-control', rows: '5' %>
+    <%= f.text_area :comment, class: 'form-control', rows: '5', required: true %>
   </div>
   <div class="form-group">
     <%= f.submit value, class: 'btn btn-primary btn-block' %>

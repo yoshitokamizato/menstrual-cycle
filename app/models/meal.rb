@@ -1,5 +1,8 @@
 class Meal < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :user
-  validates :image, presence: true
+  validates :menstrual_cycle, presence: true
+  validates :comment, presence: true
+  validates :user_id, presence: true, uniqueness: true
+  validate  :picture_size
 end
