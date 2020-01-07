@@ -2,7 +2,14 @@
 <%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <div class="container-cycle">
-    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-2' %>
+    <div class="row">
+      <div class="col-6">
+        <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-2' %>
+      </div>
+      <div class="col-6">
+        <%= link_to '記録の修正', cycle_records_edit_path, class: 'btn btn-info btn-block' %>
+      </div>
+    </div>
     <div class="form-row">
       <div class="input-group col-sm-auto mt-2 form-calendar">
         <div class="input-group-append">
@@ -36,8 +43,5 @@
     </div>
     <canvas id="chartBodyTemperature" class="mb-4"></canvas>
     <canvas id="chartBodyWeight"></canvas>
-    <hr class="devise-link my-4">
-    <%= link_to '新規記録', new_cycle_record_path, class: 'btn btn-info btn-block mb-3' %>
-    <%= link_to '記録の修正', cycle_records_edit_path, class: 'btn btn-info btn-block' %>
   </div>
 </div>

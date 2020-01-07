@@ -10,17 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require Chart.min
+//= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//= require Chart.min
+//= require flatpickr
+//= require flatpickr/l10n/ja
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require flatpickr
-//= require flatpickr/l10n/ja
 //= require jquery.ezdz
-//= require rails-ujs
-//= require_tree .
+//= require turbolinks
+// 削除の確認ダイアログが2回出るためコメントアウト
+// require_tree .
 
 // カレンダー用
 var chart_temperature;

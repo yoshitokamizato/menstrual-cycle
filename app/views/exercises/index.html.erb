@@ -3,7 +3,9 @@
   <% @exercises.each do |exercise| %>
     <hr>
     <p>生理周期：<%= exercise.menstrual_cycle %></p>
-    <p><%= image_tag exercise.image_url(:thumb) %></p>
+    <% if exercise.image? %>
+      <p><%= image_tag exercise.image.url %></p>
+    <% end %>
     <div><%= simple_format(h exercise.comment) %></div>
     <p>
       <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: "削除しますか？" } %>

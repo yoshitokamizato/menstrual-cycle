@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
     t.text "symptom", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "date"], name: "index_cycle_records_on_user_id_and_date", unique: true
   end
 
   create_table "exercises", force: :cascade do |t|
