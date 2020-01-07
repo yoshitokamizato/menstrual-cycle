@@ -6,6 +6,7 @@ ja:
       user: ユーザー
       menstruation: 生理周期
       movie: 動画
+      column: コラム
     attributes:
       admin_user:
         email: メールアドレス
@@ -31,6 +32,9 @@ ja:
       movie:
         menstruation_id: 生理周期ID
         url: 動画URL
+      column:
+        title: タイトル
+        content: 内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -263,6 +267,7 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      date: "%Y年%-m月%-d日(%a)"
     pm: 午後
   views:
     pagination:

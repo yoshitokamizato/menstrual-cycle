@@ -1,6 +1,7 @@
 /* ...
 *= require flatpickr
 *= require flatpickr/themes/material_orange
+*= require jquery.ezdz
 */
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -101,8 +102,8 @@ input.btn-calendar {
   }
 }
 
-// ボタン
-.btn-pink {
+// 動画用のボタン
+.btn-pink-ellipse {
   width: 280px;
   height: 70px;
   line-height: 70px;
@@ -119,11 +120,11 @@ input.btn-calendar {
   transition: all 0.5s ease;
 }
 
-a.btn-pink {
+a.btn-pink-ellipse {
   text-decoration: none;
 }
 
-.btn-pink:hover {
+.btn-pink-ellipse:hover {
   background: #FF88EE;
   color: #FFFC00;
 }
@@ -165,48 +166,51 @@ a.btn-pink {
   background: #fbf;
 }
 
+// コラム
+
+.chat-form {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #fef;
+}
+
+.column-title {
+  font-size: 1.4rem;
+}
+
 // 独り言
 
-.input {
-  position: fixed; bottom: 0px;
-}
-
 .contents {
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 }
 
-.balloon6 {
-  width: 100%;
+.chat-balloon {
   margin: 10px 0;
-  overflow: hidden;
 }
 
-.balloon6 .chatting {
-  width: 100%;
-  text-align: left;
-}
-.says {
-  display: inline-block;
+.chat-says {
   position: relative;
-  margin: 0 0 0 50px;
+  display: inline-block;
+  margin: 0 0 0 10px;
   padding: 10px;
-  max-width: 250px;
   border-radius: 12px;
-  background: #adff2f;
+  background: #fcf;
+  word-break: break-all;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #fcf;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
 }
 
-.says:after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 3px;
-  left: -19px;
-  border: 8px solid transparent;
-  border-right: 18px solid #adff2f;
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
-}
-.says p {
+.chat-says p {
   margin: 0;
   padding: 0;
 }

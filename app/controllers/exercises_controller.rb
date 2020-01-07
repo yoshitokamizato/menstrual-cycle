@@ -1,39 +1,39 @@
 class ExercisesController < ApplicationController
-
+  before_action :exercise_setting, only: %i[edit update destroy]
+  
   def index
-    @exercises = Exercise.all
+    @exercises = current_user.exercises
   end
 
   def new
-    @exercise = Exercise.new
+    @exercise = current_user.exercises.build
   end
 
   def create
-    Exercise.create(menstrual_cycle: exercise_params[:menstrual_cycle], image: exercise_params[:image], comment: exercise_params[:comment], user_id: current_user.id)
-    redirect_to :action => "index"
+    current_user.exercises.create(exercise_params)
+    redirect_to exercises_path
   end
 
   def edit
-    @exercise = Exercise.find(params[:id])
   end
 
   def update
-    exercise = Exercise.find(params[:id])
-    exercise.update(exercise_params)
-    redirect_to :action => "index"
+    @exercise.update(exercise_params)
+    redirect_to exercises_path
   end
 
   def destroy
-    exercise = Exercise.find(params[:id])
-    exercise.destroy
-    redirect_to :action => "index"
+    @exercise.destroy
+    redirect_to exercises_path
   end
-
-  private
 
   private
 
   def exercise_params
     params.require(:exercise).permit(:menstrual_cycle, :image, :comment, :user_id)
+  end
+
+  def exercise_setting
+    @exercise = Exercise.find(params[:id])
   end
 end

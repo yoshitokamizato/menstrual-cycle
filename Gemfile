@@ -40,6 +40,13 @@ gem 'flatpickr'
 gem 'kaminari'
 gem 'font-awesome-sass'
 
+# マークダウン
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
+
+# ドラッグ＆ドロップ
+gem 'ezdz-rails'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
@@ -67,6 +74,10 @@ group :test do
   gem 'launchy'
   gem 'webdrivers'
   gem 'rspec_junit_formatter'
+end
+
+group :production do
+  gem 'fog'
 end
 
 # Windows環境での開発ではないので削除

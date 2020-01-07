@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 //= require flatpickr/l10n/ja
+//= require jquery.ezdz
 //= require rails-ujs
 //= require_tree .
 
@@ -38,7 +39,7 @@ var a_year_ago = new Date(today.getFullYear() - 1, today.getMonth(), today.getDa
 var operation = {list: false, date: false};
 
 // カレンダーのフォーム（flatpickr）
-$(document).on('turbolinks:load', function () {
+document.addEventListener("turbolinks:load", function () {
     flatpickr.localize(flatpickr.l10ns.ja);
     // 新規記録ページ用カレンダー
     if (document.getElementById('cycle-record-date-new')) {
@@ -100,6 +101,45 @@ $(document).on('turbolinks:load', function () {
     if (document.getElementById('youtube-container')) {
         youtubeLazyLoading();
     }
+
+    // チャット用
+
+    window.chatInput = document.getElementById('chat-input')
+    window.chatButton = document.getElementById('chat-button')
+
+    if (chatInput) {
+        let chatContent
+    //
+    //     chatButton.addEventListener('click', function () {
+    //         chatContent = chatInput.value
+    //         App.room.speak(chatContent)
+    //         chatInput.value = ''
+    //     })
+
+        window.scroll(0, document.documentElement.scrollHeight)
+
+        chatInput.addEventListener('input', () => {
+            chatContent = chatInput.value
+            if (chatContent === "") {
+                chatButton.classList.add('disabled')
+            } else {
+                chatButton.classList.remove('disabled')
+            }
+        })
+    }
+
+    // 画像投稿フォーム（ドラッグ＆ドロップ）
+    $('#image-form').ezdz({
+        text: '画像',
+        validators: {
+            maxSize: 5 * 1024 * 1024
+        },
+        reject: function (file, errors) {
+            if (errors.maxSize) {
+                alert('画像サイズは5MB以下として下さい');
+            }
+        }
+    });
 });
 
 // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数
@@ -313,6 +353,7 @@ function menstruationReturnButton() {
     operation = {list: false, date: false};
     menstruationDateSetting(operation);
 }
+
 function menstruationDateSetting() {
     var startButton = document.getElementById('menstruation-start-button');
     var formList = document.getElementById('menstrual-cycle-form');
@@ -340,21 +381,9 @@ function menstruationDateSetting() {
 // 動画の遅延読み込み用関数（data-srcの値をsrcに移動）
 function youtubeLazyLoading() {
     var iframes = document.querySelectorAll('.youtube');
-    iframes.forEach(function(iframe){
-        if(iframe.getAttribute('data-src')) {
-            iframe.setAttribute('src',iframe.getAttribute('data-src'));
+    iframes.forEach(function (iframe) {
+        if (iframe.getAttribute('data-src')) {
+            iframe.setAttribute('src', iframe.getAttribute('data-src'));
         }
     });
 }
-
-// 独り言機能の送信ボタン無効化切り替え
-$(function() {
-  $('#chat-input').bind('keydown keyup keypress change', function () {
-    var input_value = $('#chat-input').val();
-    if (input_value == "") {
-      $("#button").prop("disabled", true);
-    } else {
-      $("#button").prop("disabled", false);
-    }
-  })
-})

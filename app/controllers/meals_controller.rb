@@ -1,37 +1,39 @@
 class MealsController < ApplicationController
+  before_action :meal_setting, only: %i[edit update destroy]
 
   def index
-    @meals = Meal.all
+    @meals = current_user.meals
   end
 
   def new
-    @meal = Meal.new
+    @meal = current_user.meals.build
   end
 
   def create
-    Meal.create(menstrual_cycle: meal_params[:menstrual_cycle], image: meal_params[:image], comment: meal_params[:comment], user_id: current_user.id)
-    redirect_to :action => "index"
+    @meal = current_user.meals.create(meal_params)
+    redirect_to meals_path
   end
 
   def edit
-    @meal = Meal.find(params[:id])
   end
 
   def update
-    meal = Meal.find(params[:id])
-    meal.update(meal_params)
-    redirect_to :action => "index"
+    @meal.update(meal_params)
+    redirect_to meals_path
   end
 
   def destroy
-    meal = Meal.find(params[:id])
-    meal.destroy
-    redirect_to :action => "index"
+    @meal.destroy
+    redirect_to meals_path
   end
 
   private
 
   def meal_params
     params.require(:meal).permit(:menstrual_cycle, :image, :comment, :user_id)
+  end
+
+  def meal_setting
+    @meal = Meal.find(params[:id])
   end
 end

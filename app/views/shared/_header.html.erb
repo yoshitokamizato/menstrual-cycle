@@ -16,6 +16,7 @@
               <%= link_to "記録の修正", cycle_records_edit_path, class: 'dropdown-item' %>
               <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
               <%= link_to "動画", movies_path, class: 'dropdown-item' %>
+              <%= link_to "コラム", columns_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item dropdown active">
@@ -25,6 +26,7 @@
             <div class="dropdown-menu" aria-labelledby="posting_option">
               <%= link_to "食事投稿一覧へ", meals_path, class: 'dropdown-item' %>
               <%= link_to "運動投稿一覧へ", exercises_path, class: 'dropdown-item' %>
+              <%= link_to '独り言', monologues_path, class: 'dropdown-item' %>
             </div>
           </li>
           <li class="nav-item dropdown active">
@@ -35,9 +37,6 @@
               <%= link_to 'アカウント編集', edit_user_registration_path, class: 'dropdown-item', id: 'nav-sign-edit' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
             </div>
-          </li>
-          <li class="nav-item dropdown active">
-              <%= link_to '独り言', '/rooms/show', data: {"turbolinks" => false}, class: 'dropdown-item', id: 'nav-sign-edit' %>
           </li>
         <% else %>
           <li class="nav-item active">
