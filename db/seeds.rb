@@ -1,8 +1,10 @@
+# 管理者ユーザー情報
+EMAIL = 'admin@example.com'
+PASSWORD = 'password'
+
 columns_number = 25
 
 ApplicationRecord.transaction do
-  AdminUser.destroy_all
-  User.destroy_all
   CycleRecord.destroy_all
   Menstruation.destroy_all
   Movie.destroy_all
@@ -11,16 +13,23 @@ ApplicationRecord.transaction do
   puts '-------------------------------------'
 
   if Rails.env.production?
-    AdminUser.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'])
+    AdminUser.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |user|
+      user.password = ENV['ADMIN_PASSWORD']
+      puts '管理者画面の初期データインポートに成功しました。'
+    end
   else
-    AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+    AdminUser.find_or_create_by!(email: EMAIL) do |user|
+      user.password = PASSWORD
+      puts '管理者画面の初期データインポートに成功しました。'
+    end
   end
-  puts '管理者画面の初期データインポートに成功しました。'
 
-  User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', name: '管理者', flag: true)
-  puts 'ユーザーの初期データインポートに成功しました。'
-
-  user = User.find_by(email: 'admin@example.com')
+  user = User.find_or_create_by!(email: EMAIL) do |user|
+    user.password = PASSWORD
+    user.name = '管理者'
+    user.flag = true
+    puts 'ユーザーの初期データインポートに成功しました。'
+  end
 
   cycle_records = []
 # 低温期，高温期の判定用変数

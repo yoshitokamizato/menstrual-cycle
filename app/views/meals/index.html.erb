@@ -3,7 +3,9 @@
   <% @meals.each do |meal| %>
     <hr>
     <p>生理周期：<%= meal.menstrual_cycle %></p>
-    <p><%= image_tag meal.image_url(:thumb) %></p>
+    <% if meal.image? %>
+      <p><%= image_tag meal.image.url %></p>
+    <% end %>
     <div><%= simple_format(h meal.comment) %></div>
     <p>
       <%= link_to "削除", meal_path(meal), method: :delete, data: { confirm: "削除しますか？" } %>

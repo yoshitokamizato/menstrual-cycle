@@ -47,6 +47,9 @@ gem 'coderay'
 # ドラッグ＆ドロップ
 gem 'ezdz-rails'
 
+# 本番環境で画像投稿用
+gem 'fog-aws'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
@@ -75,10 +78,3 @@ group :test do
   gem 'webdrivers'
   gem 'rspec_junit_formatter'
 end
-
-group :production do
-  gem 'fog'
-end
-
-# Windows環境での開発ではないので削除
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
