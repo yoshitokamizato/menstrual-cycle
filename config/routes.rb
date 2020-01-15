@@ -13,10 +13,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # 生理記録管理画面
-  resources :cycle_records, only: %i[index new create]
-  # editとupdateを，idを渡さずに使えるようにする
-  get 'cycle_records/edit', to: 'cycle_records#edit'
-  post 'cycle_records/update', to: 'cycle_records#update'
+  resources :cycle_records, only: :index
+  resource :cycle_records, only: %i[create update]
 
   resources :movies, only: :index
   get 'movies/edit', to: 'movies#edit'

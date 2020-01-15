@@ -42,19 +42,21 @@ ApplicationRecord.transaction do
     if rand(5) > 0
       if cycle_record_number < 15
         # 低温期の基礎体温を設定
-        body_temperature = rand(3645..3655).to_f / 100
+        temperature = rand(3645..3655).to_f / 100
       else
         # 高温期の基礎体温を設定
-        body_temperature = rand(3675..3690).to_f / 100
+        temperature = rand(3675..3690).to_f / 100
       end
-      body_weight = rand(460..480).to_f / 10
-      symptom = (body_temperature < 36.65) ? '低温期です' : '高温期です'
+      weight = rand(460..480).to_f / 10
+      symptom = CycleRecord.symptoms.sample
+      content = (temperature < 36.65) ? '低温期です' : '高温期です'
       cycle_records << {
         user_id: user.id,
         date: date,
-        body_temperature: body_temperature,
-        body_weight: body_weight,
-        symptom: symptom
+        temperature: temperature,
+        weight: weight,
+        symptom: symptom,
+        content: content
       }
     end
   end

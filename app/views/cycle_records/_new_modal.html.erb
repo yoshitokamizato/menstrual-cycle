@@ -1,0 +1,59 @@
+<div class="modal fade" id="new-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">新規記録</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: CycleRecord.new do |form| %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">日付</span>
+            </div>
+            <%= form.text_field :date, class: 'form-control bg-white', id: "new-calendar" %>
+          </div>
+          <small class="d-block">記録のある日付は選択できません。</small>
+          <small class="d-block">記録を編集されたい場合は<div class="change-modal" id="change-edit-modal">こちら</div></small>
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">基礎体温</span>
+            </div>
+            <%= form.number_field :temperature, class: 'form-control', id: "new-temperature", in: 20.00..50.00, step: '0.01', required: true %>
+            <div class="ml-2 my-auto">℃</div>
+          </div>
+          <small>小数第2位まで登録できます。</small>
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">体重</span>
+            </div>
+            <%= form.number_field :weight, class: 'form-control', id: "new-weight", in: 10.0..300.0, step: '0.1', required: true %>
+            <div class="ml-2 my-auto">kg</div>
+          </div>
+          <small>小数第1位まで登録できます。</small>
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">症状</span>
+            </div>
+            <select name="cycle_record[symptom]" id="new-symptom" class="form-control">
+              <% CycleRecord.symptoms.each do |symptom| %>
+                <option value="<%= symptom %>"><%= symptom %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="input-group mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">他</span>
+            </div>
+            <%= form.text_field :content, class: 'form-control', id: 'new-content' %>
+          </div>
+          <div class="form-group mt-3">
+            <%= form.submit '記録する', class: 'btn btn-primary btn-block', id: 'new-button' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,8 +24,8 @@ ja:
         updated_at: 更新日時
       cycle_record:
         date: 日付
-        body_temperature: 基礎体温
-        body_weight: 体重
+        temperature: 基礎体温
+        weight: 体重
         symptom: 症状
       menstruation:
         name: 生理周期

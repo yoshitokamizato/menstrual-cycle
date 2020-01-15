@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
   create_table "cycle_records", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date", null: false
-    t.float "body_temperature", null: false
-    t.float "body_weight", null: false
-    t.text "symptom", null: false
+    t.float "temperature", null: false
+    t.float "weight", null: false
+    t.string "symptom", null: false
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "date"], name: "index_cycle_records_on_user_id_and_date", unique: true
