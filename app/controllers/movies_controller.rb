@@ -3,19 +3,20 @@ class MoviesController < ApplicationController
     if current_user.menstruation_date.nil?
       redirect_to movies_edit_path
     else
-      @menstruation = Menstruation.my_menstruation(current_user.menstruation_date)
-      @movies = @menstruation.movies.order(id: :desc).page(params[:page]).per(10)
+      @menstruation_cycle = current_user.menstruation
+      @movies = Movie.where(name: @menstruation_cycle).order(id: :desc).page(params[:page]).per(10)
     end
   end
 
   def edit
-    @menstrual_cycles = Menstruation.all
+    @menstruation_date = current_user.menstruation_date || Date.today
   end
 
   def update
     if params[:user][:menstrual_cycle_name]
-      minus_day = 7 * Menstruation.ids.index(params[:user][:menstrual_cycle_name].to_i)
-      current_user.menstruation_date = Date.today - minus_day
+      binding.pry
+      minus_day = 7 * User.menstruation.index(params[:user][:menstrual_cycle_name])
+      current_user.menstruation_date = Date.today - minus_day.day
     else
       current_user.menstruation_date = params[:user][:menstruation_date]
     end

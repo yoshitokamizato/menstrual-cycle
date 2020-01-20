@@ -84,7 +84,7 @@ document.addEventListener("turbolinks:load", function () {
             defaultDate: 'today',
         })
 
-        // 記録編集用のカレンダー
+        // 生理周期日選択カレンダー
         flatpickr('#edit-calendar', {
             disableMobile: true,
             // 記録のある日付のみ選択できるようにする
@@ -290,6 +290,12 @@ document.addEventListener("turbolinks:load", function () {
         drawGraphToToday(A_WEEK_AGO)
     }
 
+    // 記録編集用のカレンダー
+    flatpickr('#menstruation-calendar', {
+        disableMobile: true,
+        maxDate: 'today'
+    })
+
     // 動画の遅延読み込み
     if (document.getElementById('youtube-container')) {
         youtubeLazyLoading();
@@ -334,199 +340,6 @@ document.addEventListener("turbolinks:load", function () {
         }
     });
 });
-
-// // 開始日と終了日を引数とした，基礎体温と体重のグラフを描く関数
-// function drawGraphs(from, to) {
-//     var cycle_records = gon.cycle_records.filter(function (record) {
-//         var date = new Date(record.date).setHours(0, 0, 0, 0);
-//         return from <= date && date <= to;
-//     });
-//     var dates_data = cycle_records.map(function (record) {
-//         return record.date.replace(/^\d+-0*(\d+)-0*(\d+)$/, '$1/$2');
-//     });
-//     var temperatures_data = cycle_records.map(function (record) {
-//         return record.temperature;
-//     });
-//     var weights_data = cycle_records.map(function (record) {
-//         return record.weight;
-//     });
-//
-//     var temperature_data_list = {
-//         labels: dates_data,
-//         datasets: [{
-//             label: '基礎体温(℃)',
-//             data: temperatures_data,
-//             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//             borderColor: 'rgba(255, 99, 132, 1)',
-//             borderWidth: 1,
-//             spanGaps: true
-//         },]
-//     };
-//     var weight_data_list = {
-//         labels: dates_data,
-//         datasets: [{
-//             label: '体重(kg)',
-//             data: weights_data,
-//             backgroundColor: 'rgba(255, 206, 86, 0.2)',
-//             borderColor: 'rgba(255, 206, 86, 1)',
-//             borderWidth: 1,
-//             spanGaps: true
-//         }]
-//     };
-//
-//     var temperature_label = function (tooltipItem) {
-//         return '基礎体温: ' + cycle_records[tooltipItem.index].temperature + '℃';
-//     };
-//     var weight_label = function (tooltipItem) {
-//         return '体重: ' + cycle_records[tooltipItem.index].weight + 'kg';
-//     };
-//     var symptom_footer = function (tooltipItems) {
-//         var symptom = '';
-//         tooltipItems.forEach(function (tooltipItem) {
-//             symptom += cycle_records[tooltipItem.index].symptom;
-//         });
-//         return '症状: ' + symptom;
-//     };
-//
-//     var chart_temperature_callbacks = {
-//         label: temperature_label,
-//         afterLabel: weight_label,
-//         footer: symptom_footer,
-//     };
-//     var chart_weight_callbacks = {
-//         label: weight_label,
-//         afterLabel: temperature_label,
-//         footer: symptom_footer,
-//     };
-//
-//     if (chart_existence) {
-//         chart_temperature.data = temperature_data_list;
-//         chart_temperature.options.tooltips.callbacks = chart_temperature_callbacks;
-//         chart_temperature.update();
-//
-//         chart_weight.data = weight_data_list;
-//         chart_weight.options.tooltips.callbacks = chart_weight_callbacks;
-//         chart_weight.update();
-//     } else {
-//         var ctx_temperature = document.getElementById('chartBodyTemperature').getContext('2d');
-//         var ctx_weight = document.getElementById('chartBodyWeight').getContext('2d');
-//
-//         chart_temperature = new Chart(ctx_temperature, {
-//             type: 'line',
-//             data: temperature_data_list,
-//             options: {
-//                 tooltips: {
-//                     callbacks: chart_temperature_callbacks
-//                 },
-//                 scales: {
-//                     yAxes: [{
-//                         ticks: {
-//                             suggestedMin: 36.5,
-//                             suggestedMax: 37.0
-//                         }
-//                     }]
-//                 }
-//             }
-//         });
-//
-//         chart_weight = new Chart(ctx_weight, {
-//             type: 'line',
-//             data: weight_data_list,
-//             options: {
-//                 tooltips: {
-//                     callbacks: chart_weight_callbacks
-//                 }
-//             }
-//         });
-//         chart_existence = true;
-//     }
-// }
-//
-// // 日付フォームに入力する関数
-// function inputDate(date_id, date) {
-//     var year = date.getFullYear();
-//     var month = ("00" + (date.getMonth() + 1)).slice(-2);
-//     var day = ("00" + date.getDate()).slice(-2);
-//
-//     document.getElementById(date_id).value = year + '-' + month + '-' + day;
-// }
-//
-// // 期間指定のボタン機能
-// function onButtonClickPeriod() {
-//     var from = new Date(document.getElementById('start-date').value + ' 00:00:00');
-//     var to = new Date(document.getElementById('end-date').value + ' 00:00:00');
-//     var three_months_later = new Date(from.getFullYear(), from.getMonth() + 3, from.getDate());
-//
-//     if (from > to) {
-//         alert('指定期間を正しく入力して下さい。');
-//     } else if (three_months_later < to) {
-//         alert('期間は３ヶ月以内として下さい。');
-//         drawGraphs(from, three_months_later);
-//     } else {
-//         drawGraphs(from, to);
-//     }
-// }
-//
-// // 過去◯日間のボタン機能
-// function onButtonClickPast(from) {
-//     // 過去◯日前のデータが無い場合は，最も古いデータを開始日とする
-//     var start_date = new Date(gon.start_date + ' 00:00:00');
-//
-//     if (start_date < from) {
-//         start_date = from;
-//     }
-//
-//     drawGraphs(start_date, today);
-//
-//     inputDate('start-date', start_date);
-//     inputDate('end-date', today);
-// }
-//
-// function onButtonClickWeek() {
-//     onButtonClickPast(a_week_ago);
-// }
-//
-// function onButtonClickTwoWeek() {
-//     onButtonClickPast(two_weeks_ago);
-// }
-//
-// function onButtonClickMonth() {
-//     onButtonClickPast(a_month_ago);
-// }
-//
-// function onButtonClickThreeMonth() {
-//     onButtonClickPast(three_months_ago);
-// }
-//
-// // 編集ページ（日付からデータを取得）
-//
-// function GetCycleRecordData() {
-//     var calendar = document.getElementById('cycle-record-date-edit');
-//     var temperature = document.getElementById('cycle-record-body-temperature');
-//     var weight = document.getElementById('cycle-record-body-weight');
-//     var symptom = document.getElementById('cycle-record-symptom');
-//     var button = document.getElementById('cycle-record-button');
-//     var destroy_button = document.getElementById('cycle-record-button-destroy');
-//     if (calendar.value) {
-//         var get_record = gon.cycle_records.find(function (record) {
-//             return record.date === calendar.value;
-//         });
-//         if (get_record) {
-//             temperature.value = get_record.temperature;
-//             weight.value = get_record.weight;
-//             symptom.value = get_record.symptom;
-//             button.disabled = '';
-//             destroy_button.disabled = '';
-//         } else {
-//             alert('記録がありません。');
-//             temperature.value = '';
-//             weight.value = '';
-//             symptom.value = '';
-//             button.disabled = 'disabled';
-//             destroy_button.disabled = 'disabled';
-//         }
-//     }
-// }
 
 // 動画表示ページ
 

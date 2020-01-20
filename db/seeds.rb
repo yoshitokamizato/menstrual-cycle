@@ -6,7 +6,6 @@ columns_number = 25
 
 ApplicationRecord.transaction do
   CycleRecord.destroy_all
-  Menstruation.destroy_all
   Movie.destroy_all
   Column.destroy_all
   puts "現在のデータを全て削除しました。"
@@ -61,39 +60,29 @@ ApplicationRecord.transaction do
     end
   end
 
-
   CycleRecord.create!(cycle_records)
   puts '生理周期記録の初期データインポートに成功しました。'
 
-  menstruation = [
-    { name: '生理期' },
-    { name: '卵胞期' },
-    { name: '黄体期' }
-  ]
-  Menstruation.create!(menstruation)
-  puts '生理周期名の初期データインポートに成功しました。'
+  menstruation = User.menstruation
 
-  menstruation_1 = Menstruation.first
-  menstruation_2 = Menstruation.second
-  menstruation_3 = Menstruation.last
   movies = [
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck' },
-    { menstruation_id: menstruation_1.id, url: 'https://youtu.be/eSi0nshRyz8' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HnkdknrWu8' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=EfSm96IomiU' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=wxART4__ruY' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8' },
-    { menstruation_id: menstruation_1.id, url: 'https://www.youtube.com/watch?v=ciDWKE_CO54' },
-    { menstruation_id: menstruation_2.id, url: 'https://youtu.be/pIjZ51xajkA?t=83' },
-    { menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
-    { menstruation_id: menstruation_2.id, url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y' },
-    { menstruation_id: menstruation_3.id, url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck' },
+    { name: menstruation[0], url: 'https://youtu.be/eSi0nshRyz8' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=_HnkdknrWu8' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=_HOlAtBUbQ0' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=Ss2dFeHgmm8' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=EfSm96IomiU' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=_vvC2Ki75TI' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=gD3emeZ7DMw' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=hSQoPXsbZDY' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=wxART4__ruY' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=l0KIsvmpoO8' },
+    { name: menstruation[0], url: 'https://www.youtube.com/watch?v=ciDWKE_CO54' },
+    { name: menstruation[1], url: 'https://youtu.be/pIjZ51xajkA?t=83' },
+    { name: menstruation[2], url: 'https://www.youtube.com/watch?v=-LTt2sLgpAk' },
+    { name: menstruation[1], url: 'https://www.youtube.com/watch?v=Yawrrgcvg5Y' },
+    { name: menstruation[2], url: 'https://www.youtube.com/watch?v=8fDQXlO7a2U' },
   ]
   Movie.create!(movies)
   puts '動画URLの初期データインポートに成功しました。'

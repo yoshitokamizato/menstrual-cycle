@@ -1,11 +1,16 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light">
     <%= link_to "生理周期アプリ", root_path, class: 'navbar-brand' %>
+    <% if user_signed_in? %>
+      <ul class="navbar-nav ml-auto mr-3 d-none d-sm-flex d-md-none">
+        <%= current_user.name %>
+      </ul>
+    <% end %>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="Navber">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown active">
             <a href="#" class="nav-link dropdown-toggle" id="cycle_records_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,6 +47,12 @@
           </li>
         <% end %>
       </ul>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav text-right">
+          <%= current_user.name %>
+        </ul>
+      <% end %>
     </div>
+
   </nav>
 </header>

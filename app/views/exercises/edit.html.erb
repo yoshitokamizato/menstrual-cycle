@@ -1,6 +1,6 @@
 <div class="container-cycle">
   <h1>運動記録更新</h1>
-  <%= render 'shared/form', model: @exercise, value: '更新' %>
+  <%= render 'shared_posts/form', model: @exercise, value: '更新', selected: @exercise.menstrual_cycle %>
   <hr>
   <%= link_to "運動投稿一覧へ", exercises_path, class: 'btn btn-info btn-block' %>
 </div>

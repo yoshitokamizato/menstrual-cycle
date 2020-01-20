@@ -20,4 +20,15 @@ class User < ApplicationRecord
   def inactive_message
     self.flag ? super : :message_that_flag_is_false
   end
+
+  def self.menstruation
+    %w(生理期 卵胞期 黄体期)
+  end
+
+  def menstruation
+    menstrual_cycle = ((Date.today - self.menstruation_date).to_i % 28) / 7
+    menstrual_cycle = 2 if menstrual_cycle == 3
+    User.menstruation[menstrual_cycle]
+  end
+
 end

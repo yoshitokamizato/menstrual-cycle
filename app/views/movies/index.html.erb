@@ -1,7 +1,7 @@
 <%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <div class="text-center mx-auto">
-    生理周期：<%= @menstruation.name %>
+    生理周期：<%= @menstruation_cycle %>
     <%= link_to '生理周期を変更する', movies_edit_path, class: 'btn-pink-ellipse my-4 mx-auto' %>
     <%= paginate @movies %>
     <div class="mx-auto" id="youtube-container">

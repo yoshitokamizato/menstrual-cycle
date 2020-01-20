@@ -79,12 +79,6 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
     t.string "user_id"
   end
 
-  create_table "menstruations", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "monologues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.integer "menstruation_id"
+    t.string "name"
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
