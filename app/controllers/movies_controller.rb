@@ -14,7 +14,6 @@ class MoviesController < ApplicationController
 
   def update
     if params[:user][:menstrual_cycle_name]
-      binding.pry
       minus_day = 7 * User.menstruation.index(params[:user][:menstrual_cycle_name])
       current_user.menstruation_date = Date.today - minus_day.day
     else

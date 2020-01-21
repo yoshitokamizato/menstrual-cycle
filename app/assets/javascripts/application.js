@@ -26,20 +26,25 @@
 // 動画の生理周期登録用
 var operation = {list: false, date: false};
 
+// '2020-01-12'のような文字列から，Javascriptの日付オブジェクトを取得する関数
+// setHoursを使用しないと，時差の影響で0時にならないため注意！
+const convertDate = (date) => {
+    return new Date(new Date(date).setHours(0, 0, 0, 0))
+}
+
 // カレンダーのフォーム（flatpickr）
 document.addEventListener("turbolinks:load", function () {
     flatpickr.localize(flatpickr.l10ns.ja);
 
     if (document.getElementById('start-calendar')) {
         // データの初日・最終日
-        // ' 00:00:00'が無いと，時差の影響を受けるので注意！
-        const START_DATE = new Date(gon.cycle_records[0].date + ' 00:00:00')
-        const END_DATE = new Date(gon.cycle_records[gon.cycle_records.length - 1].date + ' 00:00:00')
+        const START_DATE = convertDate(gon.cycle_records[0].date)
+        const END_DATE = convertDate(gon.cycle_records[gon.cycle_records.length - 1].date)
 
         // 開始日・終了日カレンダーで日付を選択したとき期間内のグラフを描く関数
         const drawGraphForPeriod = () => {
-            let from = new Date(document.getElementById('start-calendar').value + ' 00:00:00')
-            let to = new Date(document.getElementById('end-calendar').value + ' 00:00:00')
+            let from = convertDate(document.getElementById('start-calendar').value)
+            let to = convertDate(document.getElementById('end-calendar').value)
 
             if (from > to) {
                 alert('終了日は開始日以降の日付に設定して下さい')
@@ -94,7 +99,7 @@ document.addEventListener("turbolinks:load", function () {
             onChange: inputEditForm
         })
 
-        const TODAY = new Date(new Date().setHours(0, 0, 0, 0))
+        const TODAY = convertDate(new Date())
         const A_WEEK_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 6)
         const TWO_WEEKS_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate() - 13)
         const A_MONTH_AGO = new Date(TODAY.getFullYear(), TODAY.getMonth() - 1, TODAY.getDate() + 1)
@@ -125,8 +130,7 @@ document.addEventListener("turbolinks:load", function () {
         const drawGraph = (from, to) => {
             // from から to までの期間のデータに絞る
             let records = gon.cycle_records.filter((record) => {
-                // ' 00:00:00'が無いと，時差の影響を受けるので注意！
-                let date = new Date(record.date + ' 00:00:00')
+                let date = convertDate(record.date)
                 return from <= date && date <= to
             })
 

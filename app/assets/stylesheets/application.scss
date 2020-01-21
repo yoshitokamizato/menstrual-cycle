@@ -1,7 +1,7 @@
 /* ...
 *= require flatpickr
 *= require flatpickr/themes/material_orange
-*= require jquery.ezdz
+*= require ezdz
 */
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -21,6 +21,45 @@ div.container-login {
   @extend .container-fluid;
   max-width: 576px;
   padding: 2rem;
+}
+
+// ドロップダウン
+
+nav.navbar {
+  li.active {
+    transition: background-color .5s;
+
+    &:hover {
+      background-color: #fcf;
+    }
+
+  }
+  a:focus {
+    overflow: hidden;
+    outline: none;
+  }
+
+  div.dropdown-menu {
+
+    a.dropdown-item {
+      transition: background-color .3s;
+
+      &:hover {
+        background-color: #fcf;
+      }
+    }
+  }
+}
+
+.navbar-toggler:focus {
+  overflow: hidden;
+  outline: none;
+}
+
+
+li.nav-item:hover {
+
+  background-color: #fcf;
 }
 
 // ドロップメニューの背景
@@ -61,8 +100,8 @@ hr.devise-link {
 // モーダル
 
 button.close {
-  overflow : hidden;
-  outline : none;
+  overflow: hidden;
+  outline: none;
 }
 
 div.container-cycle {
@@ -91,25 +130,25 @@ div.cycle-date-form {
   height: 70px;
   line-height: 70px;
   display: block;
-  text-decoration: none;
   background: #FF99FF;
   text-align: center;
   color: #FFFFFF;
   font-size: 25px;
   font-weight: bold;
+  border: none;
   border-radius: 40px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   transition: all 0.5s ease;
-}
-
-a.btn-pink-ellipse {
   text-decoration: none;
+  overflow: hidden;
+  outline: none;
 }
 
 .btn-pink-ellipse:hover {
   background: #FF88EE;
   color: #FFFC00;
+  text-decoration: none;
 }
 
 // 動画
