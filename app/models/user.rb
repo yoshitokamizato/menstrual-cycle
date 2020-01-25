@@ -26,6 +26,7 @@ class User < ApplicationRecord
   end
 
   def menstruation
+    return "生理期" if self.menstruation_date.blank?
     menstrual_cycle = ((Date.today - self.menstruation_date).to_i % 28) / 7
     menstrual_cycle = 2 if menstrual_cycle == 3
     User.menstruation[menstrual_cycle]

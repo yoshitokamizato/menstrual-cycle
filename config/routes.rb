@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  resource :homes, only: %i[edit update]
+
   # 生理記録管理画面
   resources :cycle_records, only: :index
   resource :cycle_records, only: %i[create update]
 
   resources :movies, only: :index
-  get 'movies/edit', to: 'movies#edit'
-  patch 'movies/update', to: 'movies#update'
 
   resources :meals
   resources :exercises

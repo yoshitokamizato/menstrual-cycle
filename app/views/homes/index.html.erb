@@ -1,1 +1,16 @@
 <%= render 'shared/flash_messages' %>
+<div class="text-center">
+  <div class="top-stripe">
+    <h2><%= l Date.today, format: :date %></h2>
+  </div>
+</div>
+<div class="text-center">
+  <%= link_to edit_homes_path, class: 'top-button-circle' do %>
+    <h5>現在の周期</h5>
+    <% if current_user.menstruation_date.present? %>
+      <h2><%= current_user.menstruation %></h2>
+    <% else %>
+      <h2><%= "未登録" %></h2>
+    <% end %>
+  <% end %>
+</div>

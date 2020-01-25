@@ -34,6 +34,7 @@ nav.navbar {
     }
 
   }
+
   a:focus {
     overflow: hidden;
     outline: none;
@@ -94,6 +95,81 @@ hr.devise-link {
           hsla(0, 0%, 70%, 1) 75%);
   background-size: 10px 10px;
 }
+
+// トップページ
+
+.top-stripe {
+  display: inline-block;
+
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px, #d9e9ff 3px, #d9e9ff 7px);
+  background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px, #d9e9ff 3px, #d9e9ff 7px);
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.top-cycle-button {
+  overflow: hidden;
+  outline: none;
+}
+
+.top-cycle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  flex-flow: column;
+  vertical-align: top;
+  width: 200px;
+  height: 200px;
+
+  overflow: hidden;
+  outline: none;
+
+  text-decoration: none;
+  background: #fcf;
+  box-shadow: 0px 0px 0px 5px #fcf;
+  border: dashed 1px #FFF;
+  transition: .4s;
+}
+
+.top-button-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  vertical-align: top;
+
+  width: 200px;
+  height: 200px;
+  background: #FF99FF;
+  color: #FFFFFF;
+  box-shadow: 0px 0px 0px 5px #f9f;
+  border: dashed 1px #FFF;
+
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  overflow: hidden;
+  outline: none;
+
+  &:hover {
+    background: #FF88EE;
+    color: #FFFC00;
+    text-decoration: none;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
 
 // 生理周期記録管理画面
 

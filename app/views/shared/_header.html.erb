@@ -37,6 +37,7 @@
               オプション
             </a>
             <div class="dropdown-menu" aria-labelledby="others_option">
+              <%= link_to 'トップページ', root_path, class: 'dropdown-item' %>
               <%= link_to 'アカウント編集', edit_user_registration_path, class: 'dropdown-item', id: 'nav-sign-edit' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
             </div>
