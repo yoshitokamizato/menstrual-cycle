@@ -7,11 +7,13 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+$font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
+"Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
+"MS PGothic", sans-serif;
+
 // フッターを一番下に配置する設定を含む
 body {
-  font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
-  "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
-  "MS PGothic", sans-serif;
+  font-family: $font-family;
   background-color: #fef;
 }
 
@@ -59,7 +61,6 @@ nav.navbar {
 
 
 li.nav-item:hover {
-
   background-color: #fcf;
 }
 
@@ -98,17 +99,40 @@ hr.devise-link {
 
 // トップページ
 
-.top-stripe {
-  display: inline-block;
+div.top-container {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 1rem;
+}
 
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px, #d9e9ff 3px, #d9e9ff 7px);
-  background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px, #d9e9ff 3px, #d9e9ff 7px);
+.top-scalloped {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  vertical-align: top;
 
-  p {
-    margin: 0;
+  h5 {
+    margin: 0.6rem;
     padding: 0;
+    font-weight: bold;
+  }
+}
+
+.top-blue-scalloped {
+  background-image: image-url("blue_scalloped.svg");
+  width: 265px;
+}
+
+.top-pink-scalloped {
+  background-image: image-url("pink_scalloped.svg");
+  max-width: 197px;
+}
+
+.top-image {
+  height: 100px;
+  @media screen and (min-width: 400px) {
+    height: 150px;
   }
 }
 
@@ -121,9 +145,9 @@ hr.devise-link {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
   flex-flow: column;
   vertical-align: top;
+  border-radius: 50%;
   width: 200px;
   height: 200px;
 
@@ -160,7 +184,8 @@ hr.devise-link {
   outline: none;
 
   &:hover {
-    background: #FF88EE;
+    box-shadow: 0px 0px 0px 5px #f8e;
+    background: #f8e;
     color: #FFFC00;
     text-decoration: none;
   }
@@ -169,7 +194,6 @@ hr.devise-link {
     font-weight: bold;
   }
 }
-
 
 // 生理周期記録管理画面
 

@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_action :exercise_setting, only: %i[edit update destroy]
   
   def index
-    @exercises = current_user.exercises.recent.page(params[:page]).per(10)
+    @exercises = current_user.exercises.recent.page(params[:page]).per(25)
   end
 
   def new

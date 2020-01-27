@@ -8,6 +8,8 @@ ApplicationRecord.transaction do
   CycleRecord.destroy_all
   Movie.destroy_all
   Column.destroy_all
+  Cycle.destroy_all
+
   puts "現在のデータを全て削除しました。"
   puts '-------------------------------------'
 
@@ -63,7 +65,7 @@ ApplicationRecord.transaction do
   CycleRecord.create!(cycle_records)
   puts '生理周期記録の初期データインポートに成功しました。'
 
-  menstruation = User.menstruation
+  menstruation = Cycle.menstruation
 
   movies = [
     { name: menstruation[0], url: 'https://www.youtube.com/watch?v=WuHr7lXA5ck' },
@@ -98,45 +100,45 @@ ApplicationRecord.transaction do
     }
   end
   last_content = <<~TEXT
-  
-# 見出し1
-## 見出し2
-### 見出し3
-#### 見出し4
-##### 見出し5
-###### 見出し6
+      
+    # 見出し1
+    ## 見出し2
+    ### 見出し3
+    #### 見出し4
+    ##### 見出し5
+    ###### 見出し6
 
-1. リスト1
+    1. リスト1
 
-1. リスト1
-1. リスト2
-2. リスト3
+    1. リスト1
+    1. リスト2
+    2. リスト3
 
-1. リスト2
-10. リスト3
+    1. リスト2
+    10. リスト3
 
-**強調**
-*イタリック*
+    **強調**
+    *イタリック*
 
-***
+    ***
 
-`1行のコード`
+    `1行のコード`
 
-```html
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <title>HTMLの書き方</title>
-  </head>
-  <body>
-    <h1>HTMLの書き方</h1>
-    <p>はじめてのHTMLを作りました</p>
-  </body>
-</html>
-```
+    ```html
+    <!DOCTYPE html>
+    <html lang="ja">
+      <head>
+        <meta charset="UTF-8">
+        <title>HTMLの書き方</title>
+      </head>
+      <body>
+        <h1>HTMLの書き方</h1>
+        <p>はじめてのHTMLを作りました</p>
+      </body>
+    </html>
+    ```
 
-[Google](https://www.google.com/)
+    [Google](https://www.google.com/)
   TEXT
   columns << {
     title: "テスト投稿 その#{columns_number}",
@@ -150,6 +152,16 @@ ApplicationRecord.transaction do
   end
 
   puts 'コラムの初期データインポートに成功しました。'
+
+  cycles = [
+    { cycle: '生理期', content: 'この時期はゆったり過ごしてね' },
+    { cycle: '卵胞期', content: 'どんどん活発に動きましょう' },
+    { cycle: '黄体期', content: '自分を大切に自分がリラックス出来る事を優先に' }
+  ]
+
+  Cycle.create!(cycles)
+  puts '生理周期の初期データインポートに成功しました。'
+
 end
 puts '-------------------------------------'
 puts '全ての初期データインポートに成功しました！'

@@ -21,15 +21,20 @@ class User < ApplicationRecord
     self.flag ? super : :message_that_flag_is_false
   end
 
-  def self.menstruation
-    %w(生理期 卵胞期 黄体期)
+  def menstruation
+    return Cycle.menstruation[0] if self.menstruation_date.blank?
+    self.menstruation_base
   end
 
-  def menstruation
-    return "生理期" if self.menstruation_date.blank?
+  def menstruation_top
+    return '未登録' if self.menstruation_date.blank?
+    self.menstruation_base
+  end
+
+  def menstruation_base
     menstrual_cycle = ((Date.today - self.menstruation_date).to_i % 28) / 7
     menstrual_cycle = 2 if menstrual_cycle == 3
-    User.menstruation[menstrual_cycle]
+    Cycle.menstruation[menstrual_cycle]
   end
 
 end

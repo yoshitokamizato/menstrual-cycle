@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   before_action :meal_setting, only: %i[edit update destroy]
 
   def index
-    @meals = current_user.meals.recent.page(params[:page]).per(10)
+    @meals = current_user.meals.recent.page(params[:page]).per(25)
   end
 
   def new

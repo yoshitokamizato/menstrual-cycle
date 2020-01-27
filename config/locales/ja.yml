@@ -7,6 +7,7 @@ ja:
       menstruation: 生理周期
       movie: 動画
       column: コラム
+      cycle: メッセージ
     attributes:
       admin_user:
         email: メールアドレス
@@ -35,6 +36,8 @@ ja:
       column:
         title: タイトル
         content: 内容
+      cycle:
+        cycle: 生理周期
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
