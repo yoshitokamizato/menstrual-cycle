@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_231418) do
+ActiveRecord::Schema.define(version: 2020_01_27_015107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,20 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
   create_table "cycle_records", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "date", null: false
-    t.float "body_temperature", null: false
-    t.float "body_weight", null: false
-    t.text "symptom", null: false
+    t.float "temperature", null: false
+    t.float "weight", null: false
+    t.string "symptom", null: false
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "date"], name: "index_cycle_records_on_user_id_and_date", unique: true
+  end
+
+  create_table "cycles", force: :cascade do |t|
+    t.string "cycle"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -78,12 +86,6 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
     t.string "user_id"
   end
 
-  create_table "menstruations", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "monologues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -92,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_12_30_231418) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.integer "menstruation_id"
+    t.string "name"
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

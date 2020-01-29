@@ -1,15 +1,31 @@
-<div class="container-cycle">
-  <%= link_to "運動投稿画面へ", new_exercise_path, class: 'btn btn-primary btn-block' %>
+<div class="container-cycle px-2">
+  <%= link_to "運動投稿画面へ", new_exercise_path, class: 'btn btn-primary btn-block mb-3' %>
+  <%= paginate @exercises %>
   <% @exercises.each do |exercise| %>
-    <hr>
-    <p>生理周期：<%= exercise.menstrual_cycle %></p>
-    <% if exercise.image? %>
-      <p><%= image_tag exercise.image.url %></p>
-    <% end %>
-    <div><%= simple_format(h exercise.comment) %></div>
-    <p>
-      <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: "削除しますか？" } %>
-      <%= link_to "編集", edit_exercise_path(exercise), method: :get %>
-    </p>
+    <div class="card my-3">
+      <% if exercise.image? %>
+        <div class="card-header text-center">
+          <%= image_tag exercise.image.url %>
+        </div>
+      <% end %>
+      <div class="card-body">
+        <%= simple_format(h exercise.comment) %>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-auto col-12">
+            【生理周期】<%= exercise.menstrual_cycle %>
+          </div>
+          <div class="col-md-auto col-12">
+            【投稿日】<%= l exercise.created_at, format: :datetime %>
+          </div>
+          <div class="col-md col-12 text-right">
+            <%= link_to "編集", edit_exercise_path(exercise) %>
+            <%= link_to "削除", exercise_path(exercise), method: :delete, data: { confirm: "削除しますか？" } %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
+  <%= paginate @exercises %>
 </div>

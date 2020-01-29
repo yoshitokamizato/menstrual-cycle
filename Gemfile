@@ -50,6 +50,9 @@ gem 'ezdz-rails'
 # 本番環境で画像投稿用
 gem 'fog-aws'
 
+# 和暦
+gem 'wareki'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 

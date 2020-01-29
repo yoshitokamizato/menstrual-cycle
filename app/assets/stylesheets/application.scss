@@ -1,17 +1,19 @@
 /* ...
 *= require flatpickr
 *= require flatpickr/themes/material_orange
-*= require jquery.ezdz
+*= require ezdz
 */
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+$font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
+"Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
+"MS PGothic", sans-serif;
+
 // フッターを一番下に配置する設定を含む
 body {
-  font-family: 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
-  "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
-  "MS PGothic", sans-serif;
+  font-family: $font-family;
   background-color: #fef;
 }
 
@@ -21,6 +23,45 @@ div.container-login {
   @extend .container-fluid;
   max-width: 576px;
   padding: 2rem;
+}
+
+// ドロップダウン
+
+nav.navbar {
+  li.active {
+    transition: background-color .5s;
+
+    &:hover {
+      background-color: #fcf;
+    }
+
+  }
+
+  a:focus {
+    overflow: hidden;
+    outline: none;
+  }
+
+  div.dropdown-menu {
+
+    a.dropdown-item {
+      transition: background-color .3s;
+
+      &:hover {
+        background-color: #fcf;
+      }
+    }
+  }
+}
+
+.navbar-toggler:focus {
+  overflow: hidden;
+  outline: none;
+}
+
+
+li.nav-item:hover {
+  background-color: #fcf;
 }
 
 // ドロップメニューの背景
@@ -56,11 +97,111 @@ hr.devise-link {
   background-size: 10px 10px;
 }
 
+// トップページ
+
+div.top-container {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 1rem;
+}
+
+.top-scalloped {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  vertical-align: top;
+
+  h5 {
+    margin: 0.6rem;
+    padding: 0;
+    font-weight: bold;
+  }
+}
+
+.top-blue-scalloped {
+  background-image: image-url("blue_scalloped.svg");
+  width: 265px;
+}
+
+.top-pink-scalloped {
+  background-image: image-url("pink_scalloped.svg");
+  max-width: 197px;
+}
+
+.top-image {
+  height: 100px;
+  @media screen and (min-width: 400px) {
+    height: 150px;
+  }
+}
+
+.top-cycle-button {
+  overflow: hidden;
+  outline: none;
+}
+
+.top-cycle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  vertical-align: top;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+
+  overflow: hidden;
+  outline: none;
+
+  text-decoration: none;
+  background: #fcf;
+  box-shadow: 0px 0px 0px 5px #fcf;
+  border: dashed 1px #FFF;
+  transition: .4s;
+}
+
+.top-button-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  vertical-align: top;
+
+  width: 200px;
+  height: 200px;
+  background: #FF99FF;
+  color: #FFFFFF;
+  box-shadow: 0px 0px 0px 5px #f9f;
+  border: dashed 1px #FFF;
+
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  overflow: hidden;
+  outline: none;
+
+  &:hover {
+    box-shadow: 0px 0px 0px 5px #f8e;
+    background: #f8e;
+    color: #FFFC00;
+    text-decoration: none;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
 // 生理周期記録管理画面
 
-div.cycle-form {
-  max-width: 500px;
-  margin: auto;
+// モーダル
+
+button.close {
+  overflow: hidden;
+  outline: none;
 }
 
 div.container-cycle {
@@ -68,38 +209,19 @@ div.container-cycle {
   margin: auto;
 }
 
+div.change-modal {
+  display: inline-block;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+div.cycle-form {
+  max-width: 500px;
+  margin: auto;
+}
+
 div.cycle-date-form {
   width: 150px;
-}
-
-div.cycle-weight-form {
-  width: 150px
-}
-
-h1.cycle-title {
-  text-align: center;
-  @media screen and (max-width: 600px) {
-    font-size: 2rem;
-  }
-  @media screen and (max-width: 450px) {
-    font-size: 1.5rem;
-  }
-}
-
-th.cycle-buttons {
-  width: 90px;
-}
-
-div.form-calendar {
-  @media screen and (min-width: 576px) {
-    width: 200px;
-  }
-}
-
-input.btn-calendar {
-  @media screen and (max-width: 575px) {
-    width: 100%;
-  }
 }
 
 // 動画用のボタン
@@ -108,25 +230,25 @@ input.btn-calendar {
   height: 70px;
   line-height: 70px;
   display: block;
-  text-decoration: none;
   background: #FF99FF;
   text-align: center;
   color: #FFFFFF;
   font-size: 25px;
   font-weight: bold;
+  border: none;
   border-radius: 40px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   transition: all 0.5s ease;
-}
-
-a.btn-pink-ellipse {
   text-decoration: none;
+  overflow: hidden;
+  outline: none;
 }
 
 .btn-pink-ellipse:hover {
   background: #FF88EE;
   color: #FFFC00;
+  text-decoration: none;
 }
 
 // 動画
@@ -172,10 +294,6 @@ a.btn-pink-ellipse {
   max-width: 768px;
   margin: 0 auto;
   background-color: #fef;
-}
-
-.column-title {
-  font-size: 1.4rem;
 }
 
 // 独り言

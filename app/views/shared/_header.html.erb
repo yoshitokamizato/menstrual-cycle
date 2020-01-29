@@ -1,19 +1,22 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light">
-    <%= link_to "生理周期アプリ", root_path, class: 'navbar-brand' %>
+    <%= link_to '生理周期アプリ', root_path, class: 'navbar-brand' %>
+    <% if user_signed_in? %>
+      <ul class="navbar-nav ml-auto mr-3 d-none d-sm-flex d-md-none">
+        <%= current_user.name %>
+      </ul>
+    <% end %>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="Navber">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown active">
             <a href="#" class="nav-link dropdown-toggle" id="cycle_records_option" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               生理周期記録
             </a>
             <div class="dropdown-menu" aria-labelledby="cycle_records_option">
-              <%= link_to "新規記録", new_cycle_record_path, class: 'dropdown-item' %>
-              <%= link_to "記録の修正", cycle_records_edit_path, class: 'dropdown-item' %>
               <%= link_to "グラフ", cycle_records_path, class: 'dropdown-item' %>
               <%= link_to "動画", movies_path, class: 'dropdown-item' %>
               <%= link_to "コラム", columns_path, class: 'dropdown-item' %>
@@ -34,6 +37,7 @@
               オプション
             </a>
             <div class="dropdown-menu" aria-labelledby="others_option">
+              <%= link_to 'トップページ', root_path, class: 'dropdown-item' %>
               <%= link_to 'アカウント編集', edit_user_registration_path, class: 'dropdown-item', id: 'nav-sign-edit' %>
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', id: 'nav-sign-out' %>
             </div>
@@ -44,6 +48,12 @@
           </li>
         <% end %>
       </ul>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav text-right">
+          <%= current_user.name %>
+        </ul>
+      <% end %>
     </div>
+
   </nav>
 </header>

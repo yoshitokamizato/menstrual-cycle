@@ -1,14 +1,15 @@
 <div class="container-fluid container-cycle">
   <%= paginate @columns %>
   <% @columns.each do |column| %>
-    <hr class="border-dark">
-    <p class="d-flex align-items-center">
-      <span class="column-title mr-5"><%= column.title %></span>
-        <span>【公開日】<%= l column.created_at, format: :date %></span>
-    </p>
-    <hr>
-    <div><%= markdown(column.content).html_safe %></div>
+    <div class="card my-3">
+      <div class="card-header">
+        <h3><%= column.title %></h3>
+        <div class="text-right">【公開日】<%= l column.created_at, format: :date %></div>
+      </div>
+      <div class="card-body">
+        <div><%= markdown(column.content).html_safe %></div>
+      </div>
+    </div>
   <% end %>
-  <hr class="border-dark">
   <%= paginate @columns %>
 </div>
